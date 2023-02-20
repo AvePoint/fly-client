@@ -3,7 +3,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ReportUrl** | **String** |  | [optional] 
+**ReportUrl** | **String** | The temporary url of the report file which can be used to download the report file | [optional] 
 
 ## Examples
 
@@ -18,4 +18,3 @@ $UrlResultModel | ConvertTo-JSON
 ```
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-

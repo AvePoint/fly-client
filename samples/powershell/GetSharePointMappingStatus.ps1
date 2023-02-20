@@ -8,7 +8,7 @@ Try {
     $FilePath = 'C:\Data\50 mapping SP.csv'
     $ProjectName = '11'
     $MappingResult = 'C:\Data\mapping result.csv'
-    $project = Get-ProjectByName -Name $ProjectName
+    $project = Get-ProjectByName -ProjectName $ProjectName
     $mappings = New-Object System.Collections.ArrayList;
     $targetMappings = Import-Csv -Path $FilePath
     $allMappings = Get-ProjectMappings -ProjectId $project.Id -Top ([Int32]::MaxValue)
@@ -23,11 +23,19 @@ Try {
         }
     }
     if ($mappings.Count -gt 0) {
-        $mappings | ForEach-Object { [PSCustomObject]@{
+        $mappings | ForEach-Object {
+            $status = ''
+            if ($_.StageStatus -eq [ProjectMappingItemStageStatus]::Waiting -and $_.ScheduleTime -gt 0) {
+                $status = 'Scheduled'
+            } 
+            else {
+                $status = [ProjectMappingItemStageStatus].GetEnumName($_.StageStatus)
+            }
+            return [PSCustomObject]@{
                 SourceIdentity      = $_.SourceIdentity
                 DestinationIdentity = $_.DestinationIdentity
                 Stage               = [ProjectMappingItemStage]$_.Stage
-                StageStatus         = [ProjectMappingItemStageStatus]$_.StageStatus
+                StageStatus         = $status
                 JobProcess          = $_.JobProgress
             }
         } | Export-Csv -Path $MappingResult -NoTypeInformation

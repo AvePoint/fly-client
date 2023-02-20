@@ -4,8 +4,8 @@ All URIs are relative to *{Fly_API_Endpoint}*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**Get-ReportJobs**](DownloadCenterApi.md#Get-ReportJobs) | **POST** /downloadcenter/refresh | get information of report jobs
-[**Get-ReportUrl**](DownloadCenterApi.md#Get-ReportUrl) | **GET** /downloadcenter/reporturl | get report url by job id
+[**Get-ReportJobs**](DownloadCenterApi.md#Get-ReportJobs) | **POST** /downloadcenter/refresh | Get information of report jobs
+[**Get-ReportUrl**](DownloadCenterApi.md#Get-ReportUrl) | **GET** /downloadcenter/reporturl | Get report url by job id
 
 
 <a name="Get-ReportJobs"></a>
@@ -13,7 +13,7 @@ Method | HTTP request | Description
 > GenerateReportJobModelApiQueryResult Get-ReportJobs<br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-RequestBody] <String[]><br>
 
-get information of report jobs
+Get information of report jobs
 
 ### Example
 ```powershell
@@ -26,9 +26,9 @@ $Configuration.AccessToken = "YOUR_BEARER_TOKEN"
 $Configuration["BaseUrl"] = "{Fly_API_Endpoint}"
 
 
-$RequestBody = "MyRequestBody" # String[] |  (optional)
+$RequestBody = "MyRequestBody" # String[] | A collection of GUID for the report jobs (optional)
 
-# get information of report jobs
+# Get information of report jobs
 try {
     $Result = Get-ReportJobs -RequestBody $RequestBody
 } catch {
@@ -41,7 +41,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **RequestBody** | [**String[]**](String.md)|  | [optional] 
+ **RequestBody** | [**String[]**](String.md)| A collection of GUID for the report jobs | [optional] 
 
 ### Return type
 
@@ -53,7 +53,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
+ - **Content-Type**: application/json
  - **Accept**: text/plain, application/json, text/json, application/*+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -63,7 +63,7 @@ Name | Type | Description  | Notes
 > UrlResultModel Get-ReportUrl<br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-JobId] <String><br>
 
-get report url by job id
+Get report url by job id
 
 ### Example
 ```powershell
@@ -76,9 +76,9 @@ $Configuration.AccessToken = "YOUR_BEARER_TOKEN"
 $Configuration["BaseUrl"] = "{Fly_API_Endpoint}"
 
 
-$JobId = "38400000-8cf0-11bd-b23e-10b96e4ef00d" # String |  (optional)
+$JobId = "38400000-8cf0-11bd-b23e-10b96e4ef00d" # String | The GUID of the report job (optional)
 
-# get report url by job id
+# Get report url by job id
 try {
     $Result = Get-ReportUrl -JobId $JobId
 } catch {
@@ -91,7 +91,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **JobId** | **String**|  | [optional] 
+ **JobId** | **String**| The GUID of the report job | [optional] 
 
 ### Return type
 

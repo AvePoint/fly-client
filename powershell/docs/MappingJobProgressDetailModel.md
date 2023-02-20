@@ -3,7 +3,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**TotalCount** | **Int64** |  | [optional] 
+**TotalCount** | **Int64** | The addressed object count during migration job | [optional] 
 
 ## Examples
 
@@ -18,4 +18,3 @@ $MappingJobProgressDetailModel | ConvertTo-JSON
 ```
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-

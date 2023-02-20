@@ -4,7 +4,7 @@ All URIs are relative to *{Fly_API_Endpoint}*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**Get-Policies**](PoliciesApi.md#Get-Policies) | **GET** /policies/summaries | get policy summaries
+[**Get-Policies**](PoliciesApi.md#Get-Policies) | **GET** /policies/summaries | Get policy summaries by paging query  supported sort fields: name, description, lastModifyTime
 
 
 <a name="Get-Policies"></a>
@@ -17,7 +17,7 @@ Method | HTTP request | Description
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Top] <System.Nullable[Int32]><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Skip] <System.Nullable[Int32]><br>
 
-get policy summaries
+Get policy summaries by paging query  supported sort fields: name, description, lastModifyTime
 
 ### Example
 ```powershell
@@ -30,14 +30,14 @@ $Configuration.AccessToken = "YOUR_BEARER_TOKEN"
 $Configuration["BaseUrl"] = "{Fly_API_Endpoint}"
 
 
-$PlatformType = "0" # PlatformType |  (optional)
-$Search = "MySearch" # String |  (optional)
-$SortBy = "MySortBy" # String |  (optional)
-$SortOrder = "0" # SortOrder |  (optional)
-$Top = 56 # Int32 |  (optional)
-$Skip = 56 # Int32 |  (optional)
+$PlatformType = "0" # PlatformType | The platform type of the policy (optional)
+$Search = "MySearch" # String | Search by name field (optional)
+$SortBy = "MySortBy" # String | Order by one field (optional)
+$SortOrder = "0" # SortOrder | Order by type (optional)
+$Top = 56 # Int32 | Define the number of records you want to return, default value is 20 (optional)
+$Skip = 56 # Int32 | Define the number of records you want to skip, default value is 0 (optional)
 
-# get policy summaries
+# Get policy summaries by paging query  supported sort fields: name, description, lastModifyTime
 try {
     $Result = Get-Policies -PlatformType $PlatformType -Search $Search -SortBy $SortBy -SortOrder $SortOrder -Top $Top -Skip $Skip
 } catch {
@@ -50,12 +50,12 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **PlatformType** | [**PlatformType**](PlatformType.md)|  | [optional] 
- **Search** | **String**|  | [optional] 
- **SortBy** | **String**|  | [optional] 
- **SortOrder** | [**SortOrder**](SortOrder.md)|  | [optional] 
- **Top** | **Int32**|  | [optional] 
- **Skip** | **Int32**|  | [optional] 
+ **PlatformType** | [**PlatformType**](PlatformType.md)| The platform type of the policy | [optional] 
+ **Search** | **String**| Search by name field | [optional] 
+ **SortBy** | **String**| Order by one field | [optional] 
+ **SortOrder** | [**SortOrder**](SortOrder.md)| Order by type | [optional] 
+ **Top** | **Int32**| Define the number of records you want to return, default value is 20 | [optional] 
+ **Skip** | **Int32**| Define the number of records you want to skip, default value is 0 | [optional] 
 
 ### Return type
 

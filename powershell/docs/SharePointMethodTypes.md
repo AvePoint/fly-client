@@ -1,20 +1,12 @@
 # SharePointMethodTypes
-## Properties
-
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-
-## Examples
-
-- Prepare the resource
 ```powershell
-$SharePointMethodTypes = Initialize-FLY.ClientSharePointMethodTypes 
+enum SharePointMethodTypes {
+    # enum value: "0"
+    Attach
+    # enum value: "1"
+    Combine
+}
 ```
 
-- Convert the resource to JSON
-```powershell
-$SharePointMethodTypes | ConvertTo-JSON
-```
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-

@@ -1,20 +1,24 @@
 # ProjectMappingItemStageStatus
-## Properties
-
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-
-## Examples
-
-- Prepare the resource
 ```powershell
-$ProjectMappingItemStageStatus = Initialize-FLY.ClientProjectMappingItemStageStatus 
+enum ProjectMappingItemStageStatus {
+    # enum value: "0"
+    NotStart
+    # enum value: "1"
+    Waiting
+    # enum value: "2"
+    Queued
+    # enum value: "3"
+    InProgress
+    # enum value: "4"
+    Successful
+    # enum value: "5"
+    Exceptioned
+    # enum value: "6"
+    Failed
+    # enum value: "7"
+    Stopped
+}
 ```
 
-- Convert the resource to JSON
-```powershell
-$ProjectMappingItemStageStatus | ConvertTo-JSON
-```
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-

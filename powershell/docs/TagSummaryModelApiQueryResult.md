@@ -3,8 +3,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**NextLink** | **String** |  | [optional] 
-**VarData** | [**TagSummaryModel[]**](TagSummaryModel.md) |  | [optional] 
+**NextLink** | **String** | The link of next page result, null if there is no more data | [optional] 
+**VarData** | [**TagSummaryModel[]**](TagSummaryModel.md) | The real data set | [optional] 
 
 ## Examples
 
@@ -20,4 +20,3 @@ $TagSummaryModelApiQueryResult | ConvertTo-JSON
 ```
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-

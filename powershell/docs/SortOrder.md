@@ -1,20 +1,12 @@
 # SortOrder
-## Properties
-
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-
-## Examples
-
-- Prepare the resource
 ```powershell
-$SortOrder = Initialize-FLY.ClientSortOrder 
+enum SortOrder {
+    # enum value: "0"
+    ASC
+    # enum value: "1"
+    DESC
+}
 ```
 
-- Convert the resource to JSON
-```powershell
-$SortOrder | ConvertTo-JSON
-```
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-

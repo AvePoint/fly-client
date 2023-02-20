@@ -8,7 +8,7 @@ Try {
     $FilePath = 'C:\Data\different level.csv'
     $ProjectName = 'sp01'
     $JobType = [MappingJobType]::Validation
-    $project = Get-ProjectByName -Name $ProjectName
+    $project = Get-ProjectByName -ProjectName $ProjectName
     $mappings = New-Object System.Collections.ArrayList;
     $targetMappings = Import-Csv -Path $FilePath
     $allMappings = Get-ProjectMappings -ProjectId $project.Id -Top ([Int32]::MaxValue)

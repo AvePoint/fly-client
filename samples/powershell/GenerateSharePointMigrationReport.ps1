@@ -9,7 +9,7 @@ Try {
     $ProjectName = 'sp01'
     $IsSelectAllMappings = $true;
     $ReportFolderPath = 'C:\Data'
-    $project = Get-ProjectByName -Name $ProjectName
+    $project = Get-ProjectByName -ProjectName $ProjectName
     $mappings = New-Object System.Collections.ArrayList;
     if ($null -ne $FilePath -and !$IsSelectAllMappings) {
         $targetMappings = Import-Csv -Path $FilePath

@@ -1,20 +1,22 @@
 # ReportItemStatus
-## Properties
-
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-
-## Examples
-
-- Prepare the resource
 ```powershell
-$ReportItemStatus = Initialize-FLY.ClientReportItemStatus 
+enum ReportItemStatus {
+    # enum value: "0"
+    FailedObjects
+    # enum value: "1"
+    WarningObjects
+    # enum value: "2"
+    SuccessfulObjects
+    # enum value: "3"
+    SkippedObjects
+    # enum value: "4"
+    FilterOutObjects
+    # enum value: "5"
+    NotFoundObjects
+    # enum value: "6"
+    ErrorIgnoredObjects
+}
 ```
 
-- Convert the resource to JSON
-```powershell
-$ReportItemStatus | ConvertTo-JSON
-```
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-

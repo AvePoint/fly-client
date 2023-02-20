@@ -4,13 +4,13 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Method** | [**SharePointMethodTypes**](SharePointMethodTypes.md) |  | [optional] 
-**ProjectId** | **String** |  | [optional] 
-**SourceName** | **String** |  | [optional] 
-**SourceIdentity** | **String** |  | [optional] 
-**SourceType** | **Int32** |  | [optional] 
-**DestinationName** | **String** |  | [optional] 
-**DestinationIdentity** | **String** |  | [optional] 
-**DestinationType** | **Int32** |  | [optional] 
+**ProjectId** | **String** | Specify the GUID of project which the project mapping belongs | [optional] 
+**SourceName** | **String** | The display name of source identity | [optional] 
+**SourceIdentity** | **String** | The source identity of migration | [optional] 
+**SourceType** | **Int32** | The data type of source identity, refer to [**PlatformDataTypes**](PlatformDataTypes.md) for more details | [optional] 
+**DestinationName** | **String** | The display name of destination identity | [optional] 
+**DestinationIdentity** | **String** | The destination identity of migration | [optional] 
+**DestinationType** | **Int32** | The data type of destination identity, refer to [**PlatformDataTypes**](PlatformDataTypes.md) for more details | [optional] 
 
 ## Examples
 
@@ -32,4 +32,3 @@ $SharePointMappingCreationModel | ConvertTo-JSON
 ```
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-

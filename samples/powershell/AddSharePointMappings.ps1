@@ -7,7 +7,7 @@ Try {
     $Configuration.AccessToken = "YOUR_BEARER_TOKEN"
     $FilePath = 'C:\Data\50 mapping SP.csv'
     $ProjectName = '11'
-    $project = Get-ProjectByName -Name $ProjectName
+    $project = Get-ProjectByName -ProjectName $ProjectName
     $mappings = New-Object System.Collections.ArrayList;
     $importedMappings = Import-Csv -Path $FilePath
     foreach ($mapping in $importedMappings) {
@@ -27,5 +27,25 @@ Try {
 }
 Catch {
     Write-Host 'Failed to add the mappings to the project.' -ForegroundColor Red
-    ErrorDetail $_
+    Try {
+        $stream = $_.Exception.Response.GetResponseStream()
+        $stream.Position = 0;
+        $sr = New-Object System.IO.StreamReader($stream)
+        $err = $sr.ReadToEnd()
+        $sr.Close()
+        $stream.Close()
+        $errorModel = ConvertFrom-Json $err
+        if ($errorModel.ErrorCode -eq 'ProjectMappingDuplicated') {
+            Write-Host 'ErrorDetail : ProjectMappingDuplicated' -ForegroundColor Red
+            $errorDetails = ConvertFrom-Json $errorModel.ErrorMessage
+            $errorDetails | Select SourceIdentity, DestinationIdentity, ProjectName | Format-Table
+        }
+        else {
+            Write-Host $err -ForegroundColor Red
+        }
+    }
+    Catch {
+        #ignore
+    }
+    Write-Error $_.Exception
 }

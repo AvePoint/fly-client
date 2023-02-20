@@ -4,10 +4,10 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **StatusCode** | [**HttpStatusCode**](HttpStatusCode.md) |  | [optional] 
-**ErrorCode** | **String** |  | [optional] 
-**ErrorMessage** | **String** |  | [optional] 
-**RequestId** | **String** |  | [optional] 
-**Timestamp** | **System.DateTime** |  | [optional] 
+**ErrorCode** | **String** | The error code of current exception | [optional] 
+**ErrorMessage** | **String** | The error message of current exception | [optional] 
+**RequestId** | **String** | the request id of response | [optional] 
+**Timestamp** | **System.DateTime** | The timestamp of current response | [optional] 
 
 ## Examples
 
@@ -26,4 +26,3 @@ $ErrorModel | ConvertTo-JSON
 ```
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-

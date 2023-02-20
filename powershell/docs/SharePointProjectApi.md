@@ -4,11 +4,11 @@ All URIs are relative to *{Fly_API_Endpoint}*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**Add-SharePointMappings**](SharePointProjectApi.md#add-sharepointmappings) | **POST** /projects/sharepoint/{projectId}/mappings | add SharePoint project mappings
-[**Start-SharePointReportJob**](SharePointProjectApi.md#start-sharepointreportjob) | **POST** /projects/sharepoint/{projectId}/reports/generate | generate SharePoint migration report
-[**Start-SharePointPreScanJob**](SharePointProjectApi.md#start-sharepointprescanjob) | **POST** /projects/sharepoint/{projectId}/assessments | start SharePoint pre-scan jobs
-[**Start-SharePointMigrationJob**](SharePointProjectApi.md#start-sharepointmigrationjob) | **POST** /projects/sharepoint/{projectId}/migrations | start SharePoint migration jobs
-[**Start-SharePointVerificationJob**](SharePointProjectApi.md#start-sharepointverificationjob) | **POST** /projects/sharepoint/{projectId}/verifications | start SharePoint verification jobs
+[**Add-SharePointMappings**](SharePointProjectApi.md#add-sharepointmappings) | **POST** /projects/sharepoint/{projectId}/mappings | Add SharePoint project mappings into target project
+[**Start-SharePointReportJob**](SharePointProjectApi.md#start-sharepointreportjob) | **POST** /projects/sharepoint/{projectId}/reports/generate | Start a report collection job against the selected project mappings.
+[**Start-SharePointPreScanJob**](SharePointProjectApi.md#start-sharepointprescanjob) | **POST** /projects/sharepoint/{projectId}/assessments | Start a pre-scan job against the selected project mappings.
+[**Start-SharePointMigrationJob**](SharePointProjectApi.md#start-sharepointmigrationjob) | **POST** /projects/sharepoint/{projectId}/migrations | Start a migration job against the selected project mappings.
+[**Start-SharePointVerificationJob**](SharePointProjectApi.md#start-sharepointverificationjob) | **POST** /projects/sharepoint/{projectId}/verifications | Start a verification operation against the selected project mappings.
 
 
 <a name="add-sharepointmappings"></a>
@@ -17,7 +17,7 @@ Method | HTTP request | Description
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-ProjectId] <String><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-SharePointMappingCreationModel] <PSCustomObject[]><br>
 
-add SharePoint project mappings
+Add SharePoint project mappings into target project
 
 ### Example
 ```powershell
@@ -30,10 +30,10 @@ $Configuration.AccessToken = "YOUR_BEARER_TOKEN"
 $Configuration["BaseUrl"] = "{Fly_API_Endpoint}"
 
 
-$ProjectId = "38400000-8cf0-11bd-b23e-10b96e4ef00d" # String | 
-$SharePointMappingCreationModel = New-SharePointMappingCreationModel -Method "0" -ProjectId "MyProjectId" -SourceName "MySourceName" -SourceIdentity "MySourceIdentity" -SourceType 0 -DestinationName "MyDestinationName" -DestinationIdentity "MyDestinationIdentity" -DestinationType 0 # SharePointMappingCreationModel[] |  (optional)
+$ProjectId = "38400000-8cf0-11bd-b23e-10b96e4ef00d" # String | The GUID of the project to add into
+$SharePointMappingCreationModel = New-SharePointMappingCreationModel -Method "0" -ProjectId "MyProjectId" -SourceName "MySourceName" -SourceIdentity "MySourceIdentity" -SourceType 0 -DestinationName "MyDestinationName" -DestinationIdentity "MyDestinationIdentity" -DestinationType 0 # SharePointMappingCreationModel[] | A list of project mappings to add (optional)
 
-# add SharePoint project mappings
+# Add SharePoint project mappings into target project
 try {
     $Result = Add-SharePointMappings -ProjectId $ProjectId -SharePointMappingCreationModel $SharePointMappingCreationModel
 } catch {
@@ -46,8 +46,8 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ProjectId** | **String**|  | 
- **SharePointMappingCreationModel** | [**SharePointMappingCreationModel[]**](SharePointMappingCreationModel.md)|  | [optional] 
+ **ProjectId** | **String**| The GUID of the project to add into | 
+ **SharePointMappingCreationModel** | [**SharePointMappingCreationModel[]**](SharePointMappingCreationModel.md)| A list of project mappings to add | [optional] 
 
 ### Return type
 
@@ -59,7 +59,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
+ - **Content-Type**: application/json
  - **Accept**: text/plain, application/json, text/json, application/*+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -70,7 +70,7 @@ Name | Type | Description  | Notes
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-ProjectId] <String><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-GenerateReportSettingsModel] <PSCustomObject><br>
 
-generate SharePoint migration report
+Start a report collection job against the selected project mappings.
 
 ### Example
 ```powershell
@@ -83,10 +83,10 @@ $Configuration.AccessToken = "YOUR_BEARER_TOKEN"
 $Configuration["BaseUrl"] = "{Fly_API_Endpoint}"
 
 
-$ProjectId = "38400000-8cf0-11bd-b23e-10b96e4ef00d" # String | 
-$GenerateReportSettingsModel = New-GenerateReportSettingsModel -IncludeMappingSummary $false -IncludeDetails $false -ReportItemStatus "0" -ReportFileType "0" -TimeZone 0 -IsSelectAll $false -Search "MySearch" -MappingIds "MyMappingIds" -Stages 0 -StageStatuses 0 -Statuses "0" # GenerateReportSettingsModel |  (optional)
+$ProjectId = "38400000-8cf0-11bd-b23e-10b96e4ef00d" # String | Identifier of the project containing the selected mappings
+$GenerateReportSettingsModel = New-GenerateReportSettingsModel -IncludeMappingSummary $false -IncludeDetails $false -ReportItemStatus "0" -ReportFileType "0" -TimeZone 0 -IsSelectAll $false -Search "MySearch" -MappingIds "MyMappingIds" -Stages 0 -StageStatuses 0 -Statuses "0" # GenerateReportSettingsModel | Job configuration information. (optional)
 
-# generate SharePoint migration report
+# Start a report collection job against the selected project mappings.
 try {
     $Result = Start-SharePointReportJob -ProjectId $ProjectId -GenerateReportSettingsModel $GenerateReportSettingsModel
 } catch {
@@ -99,8 +99,8 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ProjectId** | **String**|  | 
- **GenerateReportSettingsModel** | [**GenerateReportSettingsModel**](GenerateReportSettingsModel.md)|  | [optional] 
+ **ProjectId** | **String**| Identifier of the project containing the selected mappings | 
+ **GenerateReportSettingsModel** | [**GenerateReportSettingsModel**](GenerateReportSettingsModel.md)| Job configuration information. | [optional] 
 
 ### Return type
 
@@ -112,7 +112,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
+ - **Content-Type**: application/json
  - **Accept**: text/plain, application/json, text/json, application/*+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -123,7 +123,7 @@ Name | Type | Description  | Notes
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-ProjectId] <String><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-ProjectMappingOperationModel] <PSCustomObject><br>
 
-start SharePoint pre-scan jobs
+Start a pre-scan job against the selected project mappings.
 
 ### Example
 ```powershell
@@ -136,10 +136,10 @@ $Configuration.AccessToken = "YOUR_BEARER_TOKEN"
 $Configuration["BaseUrl"] = "{Fly_API_Endpoint}"
 
 
-$ProjectId = "38400000-8cf0-11bd-b23e-10b96e4ef00d" # String | 
-$ProjectMappingOperationModel = New-ProjectMappingOperationModel -IsSelectAll $false -Search "MySearch" -MappingIds "MyMappingIds" -Stages 0 -StageStatuses 0 -Statuses "0" # ProjectMappingOperationModel |  (optional)
+$ProjectId = "38400000-8cf0-11bd-b23e-10b96e4ef00d" # String | Identifier of the project containing the selected mappings
+$ProjectMappingOperationModel = New-ProjectMappingOperationModel -IsSelectAll $false -Search "MySearch" -MappingIds "MyMappingIds" -Stages 0 -StageStatuses 0 -Statuses "0" # ProjectMappingOperationModel | Job configuration information. (optional)
 
-# start SharePoint pre-scan jobs
+# Start a pre-scan job against the selected project mappings.
 try {
     $Result = Start-SharePointPreScanJob -ProjectId $ProjectId -ProjectMappingOperationModel $ProjectMappingOperationModel
 } catch {
@@ -152,8 +152,8 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ProjectId** | **String**|  | 
- **ProjectMappingOperationModel** | [**ProjectMappingOperationModel**](ProjectMappingOperationModel.md)|  | [optional] 
+ **ProjectId** | **String**| Identifier of the project containing the selected mappings | 
+ **ProjectMappingOperationModel** | [**ProjectMappingOperationModel**](ProjectMappingOperationModel.md)| Job configuration information. | [optional] 
 
 ### Return type
 
@@ -165,7 +165,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
+ - **Content-Type**: application/json
  - **Accept**: text/plain, application/json, text/json, application/*+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -176,7 +176,7 @@ Name | Type | Description  | Notes
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-ProjectId] <String><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-MigrationJobSettingsModel] <PSCustomObject><br>
 
-start SharePoint migration jobs
+Start a migration job against the selected project mappings.
 
 ### Example
 ```powershell
@@ -189,10 +189,10 @@ $Configuration.AccessToken = "YOUR_BEARER_TOKEN"
 $Configuration["BaseUrl"] = "{Fly_API_Endpoint}"
 
 
-$ProjectId = "38400000-8cf0-11bd-b23e-10b96e4ef00d" # String | 
-$MigrationJobSettingsModel = New-MigrationJobSettingsModel -Type "0" -IsDeleteSource $false -ScheduledTime 0 -IsSelectAll $false -Search "MySearch" -MappingIds "MyMappingIds" -Stages 0 -StageStatuses 0 -Statuses "0" # MigrationJobSettingsModel |  (optional)
+$ProjectId = "38400000-8cf0-11bd-b23e-10b96e4ef00d" # String | Identifier of the project containing the selected mappings
+$MigrationJobSettingsModel = New-MigrationJobSettingsModel -Type "0" -IsDeleteSource $false -ScheduledTime 0 -IsSelectAll $false -Search "MySearch" -MappingIds "MyMappingIds" -Stages 0 -StageStatuses 0 -Statuses "0" # MigrationJobSettingsModel | Job configuration information. (optional)
 
-# start SharePoint migration jobs
+# Start a migration job against the selected project mappings.
 try {
     $Result = Start-SharePointMigrationJob -ProjectId $ProjectId -MigrationJobSettingsModel $MigrationJobSettingsModel
 } catch {
@@ -205,8 +205,8 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ProjectId** | **String**|  | 
- **MigrationJobSettingsModel** | [**MigrationJobSettingsModel**](MigrationJobSettingsModel.md)|  | [optional] 
+ **ProjectId** | **String**| Identifier of the project containing the selected mappings | 
+ **MigrationJobSettingsModel** | [**MigrationJobSettingsModel**](MigrationJobSettingsModel.md)| Job configuration information. | [optional] 
 
 ### Return type
 
@@ -218,7 +218,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
+ - **Content-Type**: application/json
  - **Accept**: text/plain, application/json, text/json, application/*+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -229,7 +229,7 @@ Name | Type | Description  | Notes
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-ProjectId] <String><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-ProjectMappingOperationModel] <PSCustomObject><br>
 
-start SharePoint verification jobs
+Start a verification operation against the selected project mappings.
 
 ### Example
 ```powershell
@@ -242,10 +242,10 @@ $Configuration.AccessToken = "YOUR_BEARER_TOKEN"
 $Configuration["BaseUrl"] = "{Fly_API_Endpoint}"
 
 
-$ProjectId = "38400000-8cf0-11bd-b23e-10b96e4ef00d" # String | 
-$ProjectMappingOperationModel = New-ProjectMappingOperationModel -IsSelectAll $false -Search "MySearch" -MappingIds "MyMappingIds" -Stages 0 -StageStatuses 0 -Statuses "0" # ProjectMappingOperationModel |  (optional)
+$ProjectId = "38400000-8cf0-11bd-b23e-10b96e4ef00d" # String | Identifier of the project containing the selected mappings
+$ProjectMappingOperationModel = New-ProjectMappingOperationModel -IsSelectAll $false -Search "MySearch" -MappingIds "MyMappingIds" -Stages 0 -StageStatuses 0 -Statuses "0" # ProjectMappingOperationModel | Job configuration information. (optional)
 
-# start SharePoint verification jobs
+# Start a verification operation against the selected project mappings.
 try {
     $Result = Start-SharePointVerificationJob -ProjectId $ProjectId -ProjectMappingOperationModel $ProjectMappingOperationModel
 } catch {
@@ -258,8 +258,8 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ProjectId** | **String**|  | 
- **ProjectMappingOperationModel** | [**ProjectMappingOperationModel**](ProjectMappingOperationModel.md)|  | [optional] 
+ **ProjectId** | **String**| Identifier of the project containing the selected mappings | 
+ **ProjectMappingOperationModel** | [**ProjectMappingOperationModel**](ProjectMappingOperationModel.md)| Job configuration information. | [optional] 
 
 ### Return type
 
@@ -271,7 +271,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
+ - **Content-Type**: application/json
  - **Accept**: text/plain, application/json, text/json, application/*+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

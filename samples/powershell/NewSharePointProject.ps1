@@ -12,10 +12,10 @@ Try {
     $DestinationConnection = 'Tony SP'
     $PolicyName = 'Tony SP'
     $TagNames = @('Tony')
-    Resolve-ProjectName -Name $Name
-    $sourceConnection = Get-ConnectionByName -Name $SourceConnectionName
-    $destinationConnection = Get-ConnectionByName -Name $DestinationConnection
-    $policy = Get-PolicyByName -Name $PolicyName
+    Resolve-ProjectName -ProjectName $Name
+    $sourceConnection = Get-ConnectionByName -ConnectionName $SourceConnectionName
+    $destinationConnection = Get-ConnectionByName -ConnectionName $DestinationConnection
+    $policy = Get-PolicyByName -PolicyName $PolicyName
     $tagIds = $TagNames | ForEach-Object { Get-TagByName $PSItem } | Select-Object -Property Id | ForEach-Object { "$($_.Id)" }
     $projectModel = [PSCustomObject]@{
         "name"                    = $Name
