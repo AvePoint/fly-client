@@ -1,4 +1,4 @@
-# MigrationJobSettingsModel
+# RunMigrationsRequest
 ## Properties
 
 Name | Type | Description | Notes
@@ -17,7 +17,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$MigrationJobSettingsModel = Initialize-FLY.ClientMigrationJobSettingsModel  -Type null `
+$RunMigrationsRequest = Initialize-FLY.ClientRunMigrationsRequest  -Type null `
  -IsDeleteSource null `
  -ScheduledTime null `
  -IsSelectAll null `
@@ -30,7 +30,7 @@ $MigrationJobSettingsModel = Initialize-FLY.ClientMigrationJobSettingsModel  -Ty
 
 - Convert the resource to JSON
 ```powershell
-$MigrationJobSettingsModel | ConvertTo-JSON
+$RunMigrationsRequest | ConvertTo-JSON
 ```
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

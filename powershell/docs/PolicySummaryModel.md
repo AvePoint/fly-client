@@ -3,7 +3,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Platform** | [**PlatformType**](PlatformType.md) |  | [optional] 
+**Platform** | [**PlatformType**](PlatformType.md) | The platform type of policy | [optional] 
 **IsDefault** | **Boolean** | A boolean value indicates whether the policy is default one | [optional] 
 **IsInUse** | **Boolean** | A boolean value indicates whether this policy is being used | [optional] 
 **Name** | **String** | The name of the object | [optional] 

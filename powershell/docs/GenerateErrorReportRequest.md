@@ -1,4 +1,4 @@
-# GenerateProjectErrorReportSettingsModel
+# GenerateErrorReportRequest
 ## Properties
 
 Name | Type | Description | Notes
@@ -11,14 +11,14 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$GenerateProjectErrorReportSettingsModel = Initialize-FLY.ClientGenerateProjectErrorReportSettingsModel  -TimeZone null `
+$GenerateErrorReportRequest = Initialize-FLY.ClientGenerateErrorReportRequest  -TimeZone null `
  -ReportFileType null `
  -ProjectIds null
 ```
 
 - Convert the resource to JSON
 ```powershell
-$GenerateProjectErrorReportSettingsModel | ConvertTo-JSON
+$GenerateErrorReportRequest | ConvertTo-JSON
 ```
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

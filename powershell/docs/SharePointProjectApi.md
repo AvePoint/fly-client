@@ -31,7 +31,8 @@ $Configuration["BaseUrl"] = "{Fly_API_Endpoint}"
 
 
 $ProjectId = "38400000-8cf0-11bd-b23e-10b96e4ef00d" # String | The GUID of the project to add into
-$SharePointMappingCreationModel = New-SharePointMappingCreationModel -Method "0" -ProjectId "MyProjectId" -SourceName "MySourceName" -SourceIdentity "MySourceIdentity" -SourceType 0 -DestinationName "MyDestinationName" -DestinationIdentity "MyDestinationIdentity" -DestinationType 0 # SharePointMappingCreationModel[] | A list of project mappings to add (optional)
+$SharePointMethodTypes = New-SharePointMethodTypes 
+$SharePointMappingCreationModel = New-SharePointMappingCreationModel -Method $SharePointMethodTypes -ProjectId "MyProjectId" -SourceName "MySourceName" -SourceIdentity "MySourceIdentity" -SourceType 0 -DestinationName "MyDestinationName" -DestinationIdentity "MyDestinationIdentity" -DestinationType 0 # SharePointMappingCreationModel[] | A list of project mappings to add
 
 # Add SharePoint project mappings into target project
 try {
@@ -47,7 +48,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ProjectId** | **String**| The GUID of the project to add into | 
- **SharePointMappingCreationModel** | [**SharePointMappingCreationModel[]**](SharePointMappingCreationModel.md)| A list of project mappings to add | [optional] 
+ **SharePointMappingCreationModel** | [**SharePointMappingCreationModel[]**](SharePointMappingCreationModel.md)| A list of project mappings to add | 
 
 ### Return type
 
@@ -68,7 +69,7 @@ Name | Type | Description  | Notes
 # **Start-SharePointReportJob**
 > String Start-SharePointReportJob<br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-ProjectId] <String><br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-GenerateReportSettingsModel] <PSCustomObject><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-GenerateMappingMigrationReportRequest] <PSCustomObject><br>
 
 Start a report collection job against the selected project mappings.
 
@@ -84,11 +85,12 @@ $Configuration["BaseUrl"] = "{Fly_API_Endpoint}"
 
 
 $ProjectId = "38400000-8cf0-11bd-b23e-10b96e4ef00d" # String | Identifier of the project containing the selected mappings
-$GenerateReportSettingsModel = New-GenerateReportSettingsModel -IncludeMappingSummary $false -IncludeDetails $false -ReportItemStatus "0" -ReportFileType "0" -TimeZone 0 -IsSelectAll $false -Search "MySearch" -MappingIds "MyMappingIds" -Stages 0 -StageStatuses 0 -Statuses "0" # GenerateReportSettingsModel | Job configuration information. (optional)
+$ReportFileType = New-ReportFileType 
+$GenerateMappingMigrationReportRequest = New-GenerateMappingMigrationReportRequest -IncludeMappingSummary $false -IncludeDetails $false -ReportItemStatus "0" -ReportFileType $ReportFileType -TimeZone 0 -IsSelectAll $false -Search "MySearch" -MappingIds "MyMappingIds" -Stages "0" -StageStatuses "0" -Statuses "0" # GenerateMappingMigrationReportRequest | Job configuration information.
 
 # Start a report collection job against the selected project mappings.
 try {
-    $Result = Start-SharePointReportJob -ProjectId $ProjectId -GenerateReportSettingsModel $GenerateReportSettingsModel
+    $Result = Start-SharePointReportJob -ProjectId $ProjectId -GenerateMappingMigrationReportRequest $GenerateMappingMigrationReportRequest
 } catch {
     Write-Host ("Exception occurred when calling Start-SharePointReportJob: {0}" -f ($_.ErrorDetails | ConvertFrom-Json))
     Write-Host ("Response headers: {0}" -f ($_.Exception.Response.Headers | ConvertTo-Json))
@@ -100,7 +102,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ProjectId** | **String**| Identifier of the project containing the selected mappings | 
- **GenerateReportSettingsModel** | [**GenerateReportSettingsModel**](GenerateReportSettingsModel.md)| Job configuration information. | [optional] 
+ **GenerateMappingMigrationReportRequest** | [**GenerateMappingMigrationReportRequest**](GenerateMappingMigrationReportRequest.md)| Job configuration information. | 
 
 ### Return type
 
@@ -121,7 +123,7 @@ Name | Type | Description  | Notes
 # **Start-SharePointPreScanJob**
 > Boolean Start-SharePointPreScanJob<br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-ProjectId] <String><br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-ProjectMappingOperationModel] <PSCustomObject><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-RunAnalysisRequest] <PSCustomObject><br>
 
 Start a pre-scan job against the selected project mappings.
 
@@ -137,11 +139,11 @@ $Configuration["BaseUrl"] = "{Fly_API_Endpoint}"
 
 
 $ProjectId = "38400000-8cf0-11bd-b23e-10b96e4ef00d" # String | Identifier of the project containing the selected mappings
-$ProjectMappingOperationModel = New-ProjectMappingOperationModel -IsSelectAll $false -Search "MySearch" -MappingIds "MyMappingIds" -Stages 0 -StageStatuses 0 -Statuses "0" # ProjectMappingOperationModel | Job configuration information. (optional)
+$RunAnalysisRequest = New-RunAnalysisRequest -IsSelectAll $false -Search "MySearch" -MappingIds "MyMappingIds" -Stages "0" -StageStatuses "0" -Statuses "0" # RunAnalysisRequest | Job configuration information.
 
 # Start a pre-scan job against the selected project mappings.
 try {
-    $Result = Start-SharePointPreScanJob -ProjectId $ProjectId -ProjectMappingOperationModel $ProjectMappingOperationModel
+    $Result = Start-SharePointPreScanJob -ProjectId $ProjectId -RunAnalysisRequest $RunAnalysisRequest
 } catch {
     Write-Host ("Exception occurred when calling Start-SharePointPreScanJob: {0}" -f ($_.ErrorDetails | ConvertFrom-Json))
     Write-Host ("Response headers: {0}" -f ($_.Exception.Response.Headers | ConvertTo-Json))
@@ -153,7 +155,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ProjectId** | **String**| Identifier of the project containing the selected mappings | 
- **ProjectMappingOperationModel** | [**ProjectMappingOperationModel**](ProjectMappingOperationModel.md)| Job configuration information. | [optional] 
+ **RunAnalysisRequest** | [**RunAnalysisRequest**](RunAnalysisRequest.md)| Job configuration information. | 
 
 ### Return type
 
@@ -174,7 +176,7 @@ Name | Type | Description  | Notes
 # **Start-SharePointMigrationJob**
 > Boolean Start-SharePointMigrationJob<br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-ProjectId] <String><br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-MigrationJobSettingsModel] <PSCustomObject><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-RunMigrationsRequest] <PSCustomObject><br>
 
 Start a migration job against the selected project mappings.
 
@@ -190,11 +192,12 @@ $Configuration["BaseUrl"] = "{Fly_API_Endpoint}"
 
 
 $ProjectId = "38400000-8cf0-11bd-b23e-10b96e4ef00d" # String | Identifier of the project containing the selected mappings
-$MigrationJobSettingsModel = New-MigrationJobSettingsModel -Type "0" -IsDeleteSource $false -ScheduledTime 0 -IsSelectAll $false -Search "MySearch" -MappingIds "MyMappingIds" -Stages 0 -StageStatuses 0 -Statuses "0" # MigrationJobSettingsModel | Job configuration information. (optional)
+$MappingJobType = New-MappingJobType 
+$RunMigrationsRequest = New-RunMigrationsRequest -Type $MappingJobType -IsDeleteSource $false -ScheduledTime 0 -IsSelectAll $false -Search "MySearch" -MappingIds "MyMappingIds" -Stages "0" -StageStatuses "0" -Statuses "0" # RunMigrationsRequest | Job configuration information.
 
 # Start a migration job against the selected project mappings.
 try {
-    $Result = Start-SharePointMigrationJob -ProjectId $ProjectId -MigrationJobSettingsModel $MigrationJobSettingsModel
+    $Result = Start-SharePointMigrationJob -ProjectId $ProjectId -RunMigrationsRequest $RunMigrationsRequest
 } catch {
     Write-Host ("Exception occurred when calling Start-SharePointMigrationJob: {0}" -f ($_.ErrorDetails | ConvertFrom-Json))
     Write-Host ("Response headers: {0}" -f ($_.Exception.Response.Headers | ConvertTo-Json))
@@ -206,7 +209,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ProjectId** | **String**| Identifier of the project containing the selected mappings | 
- **MigrationJobSettingsModel** | [**MigrationJobSettingsModel**](MigrationJobSettingsModel.md)| Job configuration information. | [optional] 
+ **RunMigrationsRequest** | [**RunMigrationsRequest**](RunMigrationsRequest.md)| Job configuration information. | 
 
 ### Return type
 
@@ -227,7 +230,7 @@ Name | Type | Description  | Notes
 # **Start-SharePointVerificationJob**
 > Boolean Start-SharePointVerificationJob<br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-ProjectId] <String><br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-ProjectMappingOperationModel] <PSCustomObject><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-RunAnalysisRequest] <PSCustomObject><br>
 
 Start a verification operation against the selected project mappings.
 
@@ -243,11 +246,11 @@ $Configuration["BaseUrl"] = "{Fly_API_Endpoint}"
 
 
 $ProjectId = "38400000-8cf0-11bd-b23e-10b96e4ef00d" # String | Identifier of the project containing the selected mappings
-$ProjectMappingOperationModel = New-ProjectMappingOperationModel -IsSelectAll $false -Search "MySearch" -MappingIds "MyMappingIds" -Stages 0 -StageStatuses 0 -Statuses "0" # ProjectMappingOperationModel | Job configuration information. (optional)
+$RunAnalysisRequest = New-RunAnalysisRequest -IsSelectAll $false -Search "MySearch" -MappingIds "MyMappingIds" -Stages "0" -StageStatuses "0" -Statuses "0" # RunAnalysisRequest | Job configuration information.
 
 # Start a verification operation against the selected project mappings.
 try {
-    $Result = Start-SharePointVerificationJob -ProjectId $ProjectId -ProjectMappingOperationModel $ProjectMappingOperationModel
+    $Result = Start-SharePointVerificationJob -ProjectId $ProjectId -RunAnalysisRequest $RunAnalysisRequest
 } catch {
     Write-Host ("Exception occurred when calling Start-SharePointVerificationJob: {0}" -f ($_.ErrorDetails | ConvertFrom-Json))
     Write-Host ("Response headers: {0}" -f ($_.Exception.Response.Headers | ConvertTo-Json))
@@ -259,7 +262,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ProjectId** | **String**| Identifier of the project containing the selected mappings | 
- **ProjectMappingOperationModel** | [**ProjectMappingOperationModel**](ProjectMappingOperationModel.md)| Job configuration information. | [optional] 
+ **RunAnalysisRequest** | [**RunAnalysisRequest**](RunAnalysisRequest.md)| Job configuration information. | 
 
 ### Return type
 

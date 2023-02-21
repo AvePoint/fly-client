@@ -14,8 +14,8 @@ Method | HTTP request | Description
 <a name="Invoke-CheckProjectExist"></a>
 # **Invoke-CheckProjectExist**
 > Boolean Invoke-CheckProjectExist<br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <String><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Name] <String><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <String><br>
 
 Check if the project name already exists
 
@@ -30,12 +30,12 @@ $Configuration.AccessToken = "YOUR_BEARER_TOKEN"
 $Configuration["BaseUrl"] = "{Fly_API_Endpoint}"
 
 
+$Name = "MyName" # String | The name of the project which you want to check
 $Id = "38400000-8cf0-11bd-b23e-10b96e4ef00d" # String | The GUID of the project which you want to check, not required (optional)
-$Name = "MyName" # String | The name of the project which you want to check, required (optional)
 
 # Check if the project name already exists
 try {
-    $Result = Invoke-CheckProjectExist -Id $Id -Name $Name
+    $Result = Invoke-CheckProjectExist -Name $Name -Id $Id
 } catch {
     Write-Host ("Exception occurred when calling Invoke-CheckProjectExist: {0}" -f ($_.ErrorDetails | ConvertFrom-Json))
     Write-Host ("Response headers: {0}" -f ($_.Exception.Response.Headers | ConvertTo-Json))
@@ -46,8 +46,8 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **Name** | **String**| The name of the project which you want to check | 
  **Id** | **String**| The GUID of the project which you want to check, not required | [optional] 
- **Name** | **String**| The name of the project which you want to check, required | [optional] 
 
 ### Return type
 
@@ -67,7 +67,7 @@ Name | Type | Description  | Notes
 <a name="New-Project"></a>
 # **New-Project**
 > void New-Project<br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-ProjectCreationModel] <PSCustomObject><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-CreateProjectRequest] <PSCustomObject><br>
 
 Create a new project
 
@@ -82,11 +82,12 @@ $Configuration.AccessToken = "YOUR_BEARER_TOKEN"
 $Configuration["BaseUrl"] = "{Fly_API_Endpoint}"
 
 
-$ProjectCreationModel = New-ProjectCreationModel -Name "MyName" -SourcePlatform "0" -SourceConnectionId "MySourceConnectionId" -DestinationPlatform "0" -DestinationConnectionId "MyDestinationConnectionId" -PolicyId "MyPolicyId" -TagIds "MyTagIds" # ProjectCreationModel | The information for project creation (optional)
+$PlatformType = New-PlatformType 
+$CreateProjectRequest = New-CreateProjectRequest -Name "MyName" -SourcePlatform $PlatformType -SourceConnectionId "MySourceConnectionId" -DestinationPlatform $PlatformType -DestinationConnectionId "MyDestinationConnectionId" -PolicyId "MyPolicyId" -TagIds "MyTagIds" # CreateProjectRequest | The information for project creation
 
 # Create a new project
 try {
-    $Result = New-Project -ProjectCreationModel $ProjectCreationModel
+    $Result = New-Project -CreateProjectRequest $CreateProjectRequest
 } catch {
     Write-Host ("Exception occurred when calling New-Project: {0}" -f ($_.ErrorDetails | ConvertFrom-Json))
     Write-Host ("Response headers: {0}" -f ($_.Exception.Response.Headers | ConvertTo-Json))
@@ -97,7 +98,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ProjectCreationModel** | [**ProjectCreationModel**](ProjectCreationModel.md)| The information for project creation | [optional] 
+ **CreateProjectRequest** | [**CreateProjectRequest**](CreateProjectRequest.md)| The information for project creation | 
 
 ### Return type
 
@@ -117,7 +118,7 @@ void (empty response body)
 <a name="start-errorreportjob"></a>
 # **Start-ErrorReportJob**
 > String Start-ErrorReportJob<br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-GenerateProjectErrorReportSettingsModel] <PSCustomObject><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-GenerateErrorReportRequest] <PSCustomObject><br>
 
 Generate error report per project.
 
@@ -132,11 +133,12 @@ $Configuration.AccessToken = "YOUR_BEARER_TOKEN"
 $Configuration["BaseUrl"] = "{Fly_API_Endpoint}"
 
 
-$GenerateProjectErrorReportSettingsModel = New-GenerateProjectErrorReportSettingsModel -TimeZone 0 -ReportFileType "0" -ProjectIds "MyProjectIds" # GenerateProjectErrorReportSettingsModel | Generate error report job configration information. (optional)
+$ReportFileType = New-ReportFileType 
+$GenerateErrorReportRequest = New-GenerateErrorReportRequest -TimeZone 0 -ReportFileType $ReportFileType -ProjectIds "MyProjectIds" # GenerateErrorReportRequest | Generate error report job configration information.
 
 # Generate error report per project.
 try {
-    $Result = Start-ErrorReportJob -GenerateProjectErrorReportSettingsModel $GenerateProjectErrorReportSettingsModel
+    $Result = Start-ErrorReportJob -GenerateErrorReportRequest $GenerateErrorReportRequest
 } catch {
     Write-Host ("Exception occurred when calling Start-ErrorReportJob: {0}" -f ($_.ErrorDetails | ConvertFrom-Json))
     Write-Host ("Response headers: {0}" -f ($_.Exception.Response.Headers | ConvertTo-Json))
@@ -147,7 +149,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **GenerateProjectErrorReportSettingsModel** | [**GenerateProjectErrorReportSettingsModel**](GenerateProjectErrorReportSettingsModel.md)| Generate error report job configration information. | [optional] 
+ **GenerateErrorReportRequest** | [**GenerateErrorReportRequest**](GenerateErrorReportRequest.md)| Generate error report job configration information. | 
 
 ### Return type
 
@@ -198,7 +200,7 @@ $Statuses = "0" # ProjectMappingItemStatus[] | A list of Statuses which will be 
 $IsScheduled = $true # Boolean | Specify a boolean value to filter the project mappings with Scheduled stage status, need add Waiting into StageStatuses parameter simultaneously if True. (optional)
 $Search = "MySearch" # String | Search by name field (optional)
 $SortBy = "MySortBy" # String | Order by one field (optional)
-$SortOrder = "0" # SortOrder | Order by type (optional)
+$SortOrder = New-SortOrder # SortOrder | Order by type (optional)
 $Top = 56 # Int32 | Define the number of records you want to return, default value is 20 (optional)
 $Skip = 56 # Int32 | Define the number of records you want to skip, default value is 0 (optional)
 
@@ -271,7 +273,7 @@ $Statuses = "0" # ProjectMappingItemStatus[] | A collection of Status which will
 $Types = "0" # PlatformType[] | A collection of Platform Types which will be used together with other serach conditions to filter projects (optional)
 $Search = "MySearch" # String | Search by name field (optional)
 $SortBy = "MySortBy" # String | Order by one field (optional)
-$SortOrder = "0" # SortOrder | Order by type (optional)
+$SortOrder = New-SortOrder # SortOrder | Order by type (optional)
 $Top = 56 # Int32 | Define the number of records you want to return, default value is 20 (optional)
 $Skip = 56 # Int32 | Define the number of records you want to skip, default value is 0 (optional)
 

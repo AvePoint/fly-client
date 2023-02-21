@@ -1,5 +1,15 @@
 # ReportItemStatus
 ```powershell
+<#
+.SYNOPSIS
+
+Enum ReportItemStatus.
+
+.DESCRIPTION
+
+The item status values that may appear in the generated migration report.
+#>
+
 enum ReportItemStatus {
     # enum value: "0"
     FailedObjects

@@ -3,8 +3,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**SourcePlatform** | [**PlatformType**](PlatformType.md) |  | [optional] 
-**DestinationPlatform** | [**PlatformType**](PlatformType.md) |  | [optional] 
+**SourcePlatform** | [**PlatformType**](PlatformType.md) | The platform type of source connection of the project | [optional] 
+**DestinationPlatform** | [**PlatformType**](PlatformType.md) | The platform type of destination connection of the project | [optional] 
 **PolicyName** | **String** | The display name of policy which applied to the project | [optional] 
 **TagNames** | **String** | The tag names of the project, concatenate multiple values using semicolons | [optional] 
 **MappingTotalCount** | **Int32** | The total count of all mappings in the project | [optional] 

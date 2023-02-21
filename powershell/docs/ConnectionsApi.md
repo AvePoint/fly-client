@@ -35,7 +35,7 @@ $Types = "0" # PlatformType[] | The filter condition by connection type (optiona
 $Sides = "0" # ConnectionSide[] | The filter condition by connection usage (optional)
 $Search = "MySearch" # String | Search by name field (optional)
 $SortBy = "MySortBy" # String | Order by one field (optional)
-$SortOrder = "0" # SortOrder | Order by type (optional)
+$SortOrder = New-SortOrder # SortOrder | Order by type (optional)
 $Top = 56 # Int32 | Define the number of records you want to return, default value is 20 (optional)
 $Skip = 56 # Int32 | Define the number of records you want to skip, default value is 0 (optional)
 

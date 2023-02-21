@@ -1,5 +1,15 @@
 # ProjectMappingItemStageStatus
 ```powershell
+<#
+.SYNOPSIS
+
+Enum ProjectMappingItemStageStatus.
+
+.DESCRIPTION
+
+* `NotStart` = 0  * `Waiting` = 1  * `Queued` = 2  * `InProgress` = 3  * `Successful` = 4  * `Exceptioned` = 5  * `Failed` = 6  * `Stopped` = 7  
+#>
+
 enum ProjectMappingItemStageStatus {
     # enum value: "0"
     NotStart

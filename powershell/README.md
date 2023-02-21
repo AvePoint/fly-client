@@ -1,6 +1,6 @@
 # FLY.Client - the PowerShell module for the Fly SDK API
 
-- SDK version: 1.0.8
+- SDK version: 1.0.10
 
 <a name="frameworks-supported"></a>
 ## Frameworks supported
@@ -27,7 +27,7 @@ To avoid function name collision, one can use `-Prefix`, e.g. `Import-Module -Na
 
 To uninstall the module, simply run:
 ```powershell
-Remove-Module -FullyQualifiedName @{ModuleName = "FLY.Client"; ModuleVersion = "1.0.8"}
+Remove-Module -FullyQualifiedName @{ModuleName = "FLY.Client"; ModuleVersion = "1.0.10"}
 ```
 
 ## Documentation for API Endpoints
@@ -58,7 +58,10 @@ Class | Method | HTTP request | Description
  - [FLY.Client\Model.ConnectionSide](docs/ConnectionSide.md)
  - [FLY.Client\Model.ConnectionSummaryModel](docs/ConnectionSummaryModel.md)
  - [FLY.Client\Model.ConnectionSummaryModelApiQueryResult](docs/ConnectionSummaryModelApiQueryResult.md)
+ - [FLY.Client\Model.CreateProjectRequest](docs/CreateProjectRequest.md)
  - [FLY.Client\Model.ErrorModel](docs/ErrorModel.md)
+ - [FLY.Client\Model.GenerateErrorReportRequest](docs/GenerateErrorReportRequest.md)
+ - [FLY.Client\Model.GenerateMappingMigrationReportRequest](docs/GenerateMappingMigrationReportRequest.md)
  - [FLY.Client\Model.GenerateProjectErrorReportSettingsModel](docs/GenerateProjectErrorReportSettingsModel.md)
  - [FLY.Client\Model.GenerateReportJobModel](docs/GenerateReportJobModel.md)
  - [FLY.Client\Model.GenerateReportJobModelApiQueryResult](docs/GenerateReportJobModelApiQueryResult.md)
@@ -78,10 +81,13 @@ Class | Method | HTTP request | Description
  - [FLY.Client\Model.ProjectMappingOperationModel](docs/ProjectMappingOperationModel.md)
  - [FLY.Client\Model.ProjectMappingSummaryModel](docs/ProjectMappingSummaryModel.md)
  - [FLY.Client\Model.ProjectMappingSummaryModelApiQueryResult](docs/ProjectMappingSummaryModelApiQueryResult.md)
+ - [FLY.Client\Model.ProjectMappingSummaryModelJobProgressDetail](docs/ProjectMappingSummaryModelJobProgressDetail.md)
  - [FLY.Client\Model.ProjectSummaryModel](docs/ProjectSummaryModel.md)
  - [FLY.Client\Model.ProjectSummaryModelApiQueryResult](docs/ProjectSummaryModelApiQueryResult.md)
  - [FLY.Client\Model.ReportFileType](docs/ReportFileType.md)
  - [FLY.Client\Model.ReportItemStatus](docs/ReportItemStatus.md)
+ - [FLY.Client\Model.RunAnalysisRequest](docs/RunAnalysisRequest.md)
+ - [FLY.Client\Model.RunMigrationsRequest](docs/RunMigrationsRequest.md)
  - [FLY.Client\Model.SharePointMappingCreationModel](docs/SharePointMappingCreationModel.md)
  - [FLY.Client\Model.SharePointMethodTypes](docs/SharePointMethodTypes.md)
  - [FLY.Client\Model.SortOrder](docs/SortOrder.md)

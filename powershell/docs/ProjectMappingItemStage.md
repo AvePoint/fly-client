@@ -1,5 +1,15 @@
 # ProjectMappingItemStage
 ```powershell
+<#
+.SYNOPSIS
+
+Enum ProjectMappingItemStage.
+
+.DESCRIPTION
+
+* `CreateMapping` = 0  * `RunVerification` = 1  * `RunAssessment` = 2  * `RunDataMigration` = 3  * `EmailForwarding` = 4  * `StopMigration` = 5  * `KeepX500EmailAddress` = 6  
+#>
+
 enum ProjectMappingItemStage {
     # enum value: "0"
     CreateMapping

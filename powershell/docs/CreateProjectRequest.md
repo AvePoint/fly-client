@@ -1,4 +1,4 @@
-# ProjectCreationModel
+# CreateProjectRequest
 ## Properties
 
 Name | Type | Description | Notes
@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$ProjectCreationModel = Initialize-FLY.ClientProjectCreationModel  -Name null `
+$CreateProjectRequest = Initialize-FLY.ClientCreateProjectRequest  -Name null `
  -SourcePlatform null `
  -SourceConnectionId null `
  -DestinationPlatform null `
@@ -26,7 +26,7 @@ $ProjectCreationModel = Initialize-FLY.ClientProjectCreationModel  -Name null `
 
 - Convert the resource to JSON
 ```powershell
-$ProjectCreationModel | ConvertTo-JSON
+$CreateProjectRequest | ConvertTo-JSON
 ```
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

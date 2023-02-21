@@ -1,5 +1,15 @@
 # SharePointMethodTypes
 ```powershell
+<#
+.SYNOPSIS
+
+Enum SharePointMethodTypes.
+
+.DESCRIPTION
+
+* `Attach` = 0  * `Combine` = 1  
+#>
+
 enum SharePointMethodTypes {
     # enum value: "0"
     Attach

@@ -3,8 +3,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ConnectionType** | [**PlatformType**](PlatformType.md) |  | [optional] 
-**ConnectionSide** | [**ConnectionSide**](ConnectionSide.md) |  | [optional] 
+**ConnectionType** | [**PlatformType**](PlatformType.md) | The platform type of the connection. | [optional] 
+**ConnectionSide** | [**ConnectionSide**](ConnectionSide.md) | The connection configure for source, destination or both. | [optional] 
 **Name** | **String** | The name of the object | [optional] 
 **Description** | **String** | The description of the object | [optional] 
 **CreateTime** | **Int64** | The creation time of the object | [optional] 

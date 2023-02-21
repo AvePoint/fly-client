@@ -3,14 +3,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Method** | [**SharePointMethodTypes**](SharePointMethodTypes.md) |  | [optional] 
+**Method** | [**SharePointMethodTypes**](SharePointMethodTypes.md) | Specify the method of migration action, Attach or Combine | 
 **ProjectId** | **String** | Specify the GUID of project which the project mapping belongs | [optional] 
 **SourceName** | **String** | The display name of source identity | [optional] 
-**SourceIdentity** | **String** | The source identity of migration | [optional] 
-**SourceType** | **Int32** | The data type of source identity, refer to [**PlatformDataTypes**](PlatformDataTypes.md) for more details | [optional] 
+**SourceIdentity** | **String** | The source identity of migration | 
+**SourceType** | **Int32** | The data type of source identity, refer to [**PlatformDataTypes**](PlatformDataTypes.md) for more details | 
 **DestinationName** | **String** | The display name of destination identity | [optional] 
-**DestinationIdentity** | **String** | The destination identity of migration | [optional] 
-**DestinationType** | **Int32** | The data type of destination identity, refer to [**PlatformDataTypes**](PlatformDataTypes.md) for more details | [optional] 
+**DestinationIdentity** | **String** | The destination identity of migration | 
+**DestinationType** | **Int32** | The data type of destination identity, refer to [**PlatformDataTypes**](PlatformDataTypes.md) for more details | 
 
 ## Examples
 

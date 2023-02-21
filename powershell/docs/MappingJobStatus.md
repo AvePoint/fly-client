@@ -1,5 +1,15 @@
 # MappingJobStatus
 ```powershell
+<#
+.SYNOPSIS
+
+Enum MappingJobStatus.
+
+.DESCRIPTION
+
+* `Unknown` = 0  * `Running` = 1  * `Finished` = 2  * `FinishedWithException` = 3  * `Failed` = 4  * `Stopped` = 5  
+#>
+
 enum MappingJobStatus {
     # enum value: "0"
     Unknown

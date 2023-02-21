@@ -1,5 +1,15 @@
 # ReportFileType
 ```powershell
+<#
+.SYNOPSIS
+
+Enum ReportFileType.
+
+.DESCRIPTION
+
+* `CSV` = 0  * `Excel` = 1  
+#>
+
 enum ReportFileType {
     # enum value: "0"
     CSV

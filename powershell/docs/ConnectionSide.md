@@ -1,5 +1,15 @@
 # ConnectionSide
 ```powershell
+<#
+.SYNOPSIS
+
+Enum ConnectionSide.
+
+.DESCRIPTION
+
+* `All` = 0  * `Source` = 1  * `Destination` = 2  
+#>
+
 enum ConnectionSide {
     # enum value: "0"
     All

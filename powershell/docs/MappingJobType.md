@@ -1,5 +1,15 @@
 # MappingJobType
 ```powershell
+<#
+.SYNOPSIS
+
+Enum MappingJobType.
+
+.DESCRIPTION
+
+Supported job types when you start a job for a list of specified projects or mappings.
+#>
+
 enum MappingJobType {
     # enum value: "0"
     Validation

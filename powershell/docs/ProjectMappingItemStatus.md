@@ -1,5 +1,15 @@
 # ProjectMappingItemStatus
 ```powershell
+<#
+.SYNOPSIS
+
+Enum ProjectMappingItemStatus.
+
+.DESCRIPTION
+
+A list of values indicating different status of a project mapping.
+#>
+
 enum ProjectMappingItemStatus {
     # enum value: "0"
     NotMigrated

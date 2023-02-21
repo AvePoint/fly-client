@@ -1,5 +1,15 @@
 # PlatformType
 ```powershell
+<#
+.SYNOPSIS
+
+Enum PlatformType.
+
+.DESCRIPTION
+
+* `Exchange` = 0  * `Teams` = 1  * `SharePoint` = 2  * `OneDrive` = 3  * `M365Group` = 4  * `TeamChat` = 5  * `HostedExchange` = 6  * `PowerPlatform` = 7  * `Gmail` = 8  
+#>
+
 enum PlatformType {
     # enum value: "0"
     Exchange

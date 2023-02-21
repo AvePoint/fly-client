@@ -26,7 +26,7 @@ $Configuration.AccessToken = "YOUR_BEARER_TOKEN"
 $Configuration["BaseUrl"] = "{Fly_API_Endpoint}"
 
 
-$RequestBody = "MyRequestBody" # String[] | A collection of GUID for the report jobs (optional)
+$RequestBody = "MyRequestBody" # String[] | A collection of GUID for the report jobs
 
 # Get information of report jobs
 try {
@@ -41,7 +41,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **RequestBody** | [**String[]**](String.md)| A collection of GUID for the report jobs | [optional] 
+ **RequestBody** | [**String[]**](String.md)| A collection of GUID for the report jobs | 
 
 ### Return type
 
@@ -76,7 +76,7 @@ $Configuration.AccessToken = "YOUR_BEARER_TOKEN"
 $Configuration["BaseUrl"] = "{Fly_API_Endpoint}"
 
 
-$JobId = "38400000-8cf0-11bd-b23e-10b96e4ef00d" # String | The GUID of the report job (optional)
+$JobId = "38400000-8cf0-11bd-b23e-10b96e4ef00d" # String | The GUID of the report job
 
 # Get report url by job id
 try {
@@ -91,7 +91,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **JobId** | **String**| The GUID of the report job | [optional] 
+ **JobId** | **String**| The GUID of the report job | 
 
 ### Return type
 
