@@ -67,7 +67,7 @@ Name | Type | Description  | Notes
 <a name="New-Project"></a>
 # **New-Project**
 > void New-Project<br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-CreateProjectRequest] <PSCustomObject><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-ProjectCreationModel] <PSCustomObject><br>
 
 Create a new project
 
@@ -83,11 +83,11 @@ $Configuration["BaseUrl"] = "{Fly_API_Endpoint}"
 
 
 $PlatformType = New-PlatformType 
-$CreateProjectRequest = New-CreateProjectRequest -Name "MyName" -SourcePlatform $PlatformType -SourceConnectionId "MySourceConnectionId" -DestinationPlatform $PlatformType -DestinationConnectionId "MyDestinationConnectionId" -PolicyId "MyPolicyId" -TagIds "MyTagIds" # CreateProjectRequest | The information for project creation
+$ProjectCreationModel = New-ProjectCreationModel -Name "MyName" -SourcePlatform $PlatformType -SourceConnectionId "MySourceConnectionId" -DestinationPlatform $PlatformType -DestinationConnectionId "MyDestinationConnectionId" -PolicyId "MyPolicyId" -TagIds "MyTagIds" # ProjectCreationModel | The information for project creation
 
 # Create a new project
 try {
-    $Result = New-Project -CreateProjectRequest $CreateProjectRequest
+    $Result = New-Project -ProjectCreationModel $ProjectCreationModel
 } catch {
     Write-Host ("Exception occurred when calling New-Project: {0}" -f ($_.ErrorDetails | ConvertFrom-Json))
     Write-Host ("Response headers: {0}" -f ($_.Exception.Response.Headers | ConvertTo-Json))
@@ -98,7 +98,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **CreateProjectRequest** | [**CreateProjectRequest**](CreateProjectRequest.md)| The information for project creation | 
+ **ProjectCreationModel** | [**ProjectCreationModel**](ProjectCreationModel.md)| The information for project creation | 
 
 ### Return type
 
@@ -118,7 +118,7 @@ void (empty response body)
 <a name="start-errorreportjob"></a>
 # **Start-ErrorReportJob**
 > String Start-ErrorReportJob<br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-GenerateErrorReportRequest] <PSCustomObject><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-GenerateProjectErrorReportSettingsModel] <PSCustomObject><br>
 
 Generate error report per project.
 
@@ -134,11 +134,11 @@ $Configuration["BaseUrl"] = "{Fly_API_Endpoint}"
 
 
 $ReportFileType = New-ReportFileType 
-$GenerateErrorReportRequest = New-GenerateErrorReportRequest -TimeZone 0 -ReportFileType $ReportFileType -ProjectIds "MyProjectIds" # GenerateErrorReportRequest | Generate error report job configration information.
+$GenerateProjectErrorReportSettingsModel = New-GenerateProjectErrorReportSettingsModel -TimeZone 0 -ReportFileType $ReportFileType -ProjectIds "MyProjectIds" # GenerateProjectErrorReportSettingsModel | Generate error report job configration information.
 
 # Generate error report per project.
 try {
-    $Result = Start-ErrorReportJob -GenerateErrorReportRequest $GenerateErrorReportRequest
+    $Result = Start-ErrorReportJob -GenerateProjectErrorReportSettingsModel $GenerateProjectErrorReportSettingsModel
 } catch {
     Write-Host ("Exception occurred when calling Start-ErrorReportJob: {0}" -f ($_.ErrorDetails | ConvertFrom-Json))
     Write-Host ("Response headers: {0}" -f ($_.Exception.Response.Headers | ConvertTo-Json))
@@ -149,7 +149,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **GenerateErrorReportRequest** | [**GenerateErrorReportRequest**](GenerateErrorReportRequest.md)| Generate error report job configration information. | 
+ **GenerateProjectErrorReportSettingsModel** | [**GenerateProjectErrorReportSettingsModel**](GenerateProjectErrorReportSettingsModel.md)| Generate error report job configration information. | 
 
 ### Return type
 

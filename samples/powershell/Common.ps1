@@ -197,18 +197,9 @@ function ErrorDetail {
     )
 
     Process {
-        'Calling method: Read-ErrorMessage' | Write-Debug
-        Try {
-            $stream = $Error.Exception.Response.GetResponseStream()
-            $stream.Position = 0;
-            $sr = New-Object System.IO.StreamReader($stream)
-            $err = $sr.ReadToEnd()
-            $sr.Close()
-            $stream.Close()
-            Write-Host $err -ForegroundColor Red
-        }
-        Catch {
-            #ignore
+        'Calling method: ErrorDetail' | Write-Debug
+        if ($Error.ErrorDetails.Message) {
+            Write-Host $Error.ErrorDetails.Message -ForegroundColor Red
         }
         Write-Error $Error
     }

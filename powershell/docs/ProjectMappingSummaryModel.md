@@ -24,7 +24,7 @@ Name | Type | Description | Notes
 **Stage** | [**ProjectMappingItemStage**](ProjectMappingItemStage.md) | Current or previous migration stage of the project mapping | [optional] 
 **StageStatus** | [**ProjectMappingItemStageStatus**](ProjectMappingItemStageStatus.md) | The status of current migration stage against the project mapping | [optional] 
 **JobProgress** | **Int32** | The migration job progress of the project mapping, only available for the project mapping which is executing migration job | [optional] 
-**JobProgressDetail** | [**ProjectMappingSummaryModelJobProgressDetail**](ProjectMappingSummaryModelJobProgressDetail.md) |  | [optional] 
+**JobProgressDetail** | [**MappingJobProgressDetailModel**](MappingJobProgressDetailModel.md) |  | [optional] 
 **MigratedSize** | **Int64** | The data size already migrated against the project mapping | [optional] 
 **ErrorItemCount** | **Int64** | The error account during migration job against the project mapping | [optional] 
 **Id** | **String** | The GUID of the object | [optional] 

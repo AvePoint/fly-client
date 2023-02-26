@@ -112,6 +112,6 @@ function Convert-DateTimeToEpoch {
         return $secondsSinceEpoch
     }
 }
-[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
+[System.Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
 $cert = (Get-ChildItem -path 'Cert:\*304CAFB0719971D7F180DE983F649DFAC85D47D3' -Recurse)[0]
 Get-IdentityServiceToken -IdentityServiceUri "https://identity-public.sharepointguild.com" -Scope fly.graph.readwrite.all -ClientId "4aeeb44e-325a-4002-a36d-2986b65cad0a" -Cert $cert > C:\Data\token.txt
