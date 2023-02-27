@@ -1,5 +1,6 @@
 Try {
-    [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
+    [System.Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
+    [System.Net.HttpWebRequest]::DefaultMaximumErrorResponseLength = -1
     Import-Module ((Split-Path -Parent $MyInvocation.MyCommand.Definition) + "\Common.ps1") -Force
     Import-Module -Name "Fly.Client"
     $Configuration = Get-Configuration
@@ -27,25 +28,16 @@ Try {
 }
 Catch {
     Write-Host 'Failed to add the mappings to the project.' -ForegroundColor Red
-    Try {
-        $stream = $_.Exception.Response.GetResponseStream()
-        $stream.Position = 0;
-        $sr = New-Object System.IO.StreamReader($stream)
-        $err = $sr.ReadToEnd()
-        $sr.Close()
-        $stream.Close()
-        $errorModel = ConvertFrom-Json $err
+    if ($_.ErrorDetails.Message) {
+        $errorModel = ConvertFrom-Json $_.ErrorDetails.Message
         if ($errorModel.ErrorCode -eq 'ProjectMappingDuplicated') {
             Write-Host 'ErrorDetail : ProjectMappingDuplicated' -ForegroundColor Red
             $errorDetails = ConvertFrom-Json $errorModel.ErrorMessage
-            $errorDetails | Select SourceIdentity, DestinationIdentity, ProjectName | Format-Table
+            $errorDetails | Select-Object SourceIdentity, DestinationIdentity, ProjectName | Format-Table
         }
         else {
-            Write-Host $err -ForegroundColor Red
+            Write-Host $_.ErrorDetails.Message -ForegroundColor Red
         }
-    }
-    Catch {
-        #ignore
     }
     Write-Error $_.Exception
 }
