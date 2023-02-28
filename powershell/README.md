@@ -1,6 +1,6 @@
 # FLY.Client - the PowerShell module for the Fly SDK API
 
-- SDK version: 1.0.11
+- SDK version: 1.0.12
 
 <a name="frameworks-supported"></a>
 ## Frameworks supported
@@ -17,17 +17,9 @@ To install from PowerShell Gallery (https://www.powershellgallery.com/packages/F
 Import-Module -Name Fly.Client -Verbose
 ```
 
-To install from the source, run the following command to build and install the PowerShell module locally:
-```powershell
-Build.ps1
-Import-Module -Name '.\src\FLY.Client' -Verbose
-```
-
-To avoid function name collision, one can use `-Prefix`, e.g. `Import-Module -Name '.\src\FLY.Client' -Prefix prefix`
-
 To uninstall the module, simply run:
 ```powershell
-Remove-Module -FullyQualifiedName @{ModuleName = "FLY.Client"; ModuleVersion = "1.0.11"}
+Remove-Module -FullyQualifiedName @{ModuleName = "FLY.Client"; ModuleVersion = "1.0.12"}
 ```
 
 ## Documentation for API Endpoints

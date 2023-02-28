@@ -1,17 +1,22 @@
 Try {
-    [System.Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
+    [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.SecurityProtocolType]::Tls12
     Import-Module ((Split-Path -Parent $MyInvocation.MyCommand.Definition) + "\Common.ps1") -Force
     Import-Module -Name "Fly.Client"
+    #Get the global configuration object to set Fly_API_Endpoint and your access token
     $Configuration = Get-Configuration
     $Configuration["BaseUrl"] = "{Fly_API_Endpoint}"
     $Configuration.AccessToken = "YOUR_BEARER_TOKEN"
+    #Specify the file path of the project mappings to run migration job, only support csv format
     $FilePath = 'C:\Data\different level.csv'
+    #Specify the name of the project to run migration job
     $ProjectName = 'sp01'
+    #Specify the type of the migration job, support Validation, Assessment, FullMigration, IncrementalMigration, ErrorOnly, PermissionOnly
     $JobType = [MappingJobType]::Validation
     $project = Get-ProjectByName -ProjectName $ProjectName
     $mappings = New-Object System.Collections.ArrayList;
     $targetMappings = Import-Csv -Path $FilePath
     $allMappings = Get-ProjectMappings -ProjectId $project.Id -Top ([Int32]::MaxValue)
+    #Match the project mapping list between csv file and specified project
     foreach ($target in $targetMappings) {
         foreach ($mapping in $allMappings.data) {
             $sourceIdentity = [System.Web.HttpUtility]::UrlDecode($target.'Source URL')
@@ -23,12 +28,14 @@ Try {
         }
     }
     if ($mappings.Count -gt 0) {
+        #Construct the settings of the migration job
         $mappingIds = $mappings | Select-Object -Property Id | ForEach-Object { "$($_.Id)" }
         $jobSetting = [PSCustomObject]@{
             "type"       = $JobType
             "mappingIds" = @($mappingIds)
         }
         $result = $true
+        #Run migration job
         if ([MappingJobType]::Validation -eq $JobType) {
             $result = Start-SharepointVerificationJob -ProjectId $project.Id -ProjectMappingOperationModel $jobSetting
         }
