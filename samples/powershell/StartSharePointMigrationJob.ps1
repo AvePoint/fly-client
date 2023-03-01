@@ -2,12 +2,12 @@ Try {
     [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.SecurityProtocolType]::Tls12
     Import-Module ((Split-Path -Parent $MyInvocation.MyCommand.Definition) + "\Common.ps1") -Force
     Import-Module -Name "Fly.Client"
-    #Get the global configuration object to set Fly_API_Endpoint and your access token
+    #Get the global configuration object to set Fly_API_Endpoint and your access token, please refer to Fly user guide on how to get them
     $Configuration = Get-Configuration
     $Configuration["BaseUrl"] = "{Fly_API_Endpoint}"
     $Configuration.AccessToken = "YOUR_BEARER_TOKEN"
-    #Specify the file path of the project mappings to run migration job, only support csv format
-    $FilePath = 'C:\Data\different level.csv'
+    #Specify the file path of the project mappings to run migration job, please refer to the csv format of importing project mapping in Fly UI
+    $FilePath = '{The absolute path to the file}'
     #Specify the name of the project to run migration job
     $ProjectName = 'sp01'
     #Specify the type of the migration job, support Validation, Assessment, FullMigration, IncrementalMigration, ErrorOnly, PermissionOnly

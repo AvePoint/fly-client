@@ -3,12 +3,12 @@ Try {
     [System.Net.HttpWebRequest]::DefaultMaximumErrorResponseLength = -1
     Import-Module ((Split-Path -Parent $MyInvocation.MyCommand.Definition) + "\Common.ps1") -Force
     Import-Module -Name "Fly.Client"
-    #Get the global configuration object to set Fly_API_Endpoint and your access token
+    #Get the global configuration object to set Fly_API_Endpoint and your access token, please refer to Fly user guide on how to get them
     $Configuration = Get-Configuration
     $Configuration["BaseUrl"] = "{Fly_API_Endpoint}"
     $Configuration.AccessToken = "YOUR_BEARER_TOKEN"
-    #Specify the file path of the project mappings to import, only support csv format
-    $FilePath = 'C:\Data\50 mapping SP.csv'
+    #Specify the file path of the project mappings to import, please refer to the csv format of importing project mapping in Fly UI
+    $FilePath = '{The absolute path to the file}'
     #Specify the name of the project to import
     $ProjectName = '11'
     $project = Get-ProjectByName -ProjectName $ProjectName

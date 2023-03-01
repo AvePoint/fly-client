@@ -2,18 +2,19 @@ Try {
     [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.SecurityProtocolType]::Tls12
     Import-Module ((Split-Path -Parent $MyInvocation.MyCommand.Definition) + "\Common.ps1") -Force
     Import-Module -Name "Fly.Client"
-    #Get the global configuration object to set Fly_API_Endpoint and your access token
+    #Get the global configuration object to set Fly_API_Endpoint and your access token, please refer to Fly user guide on how to get them
     $Configuration = Get-Configuration
     $Configuration["BaseUrl"] = "{Fly_API_Endpoint}"
     $Configuration.AccessToken = "YOUR_BEARER_TOKEN"
-    #Specify the file path of the project mappings to generate report, only support csv format, optional if $IsSelectAllMappings is true
-    $FilePath = 'C:\Data\50 mapping SP.csv'
+    #Specify the file path of the project mappings to generate report, please refer to the csv format of importing project mapping in Fly UI,
+    #optional if $IsSelectAllMappings is true
+    $FilePath = '{The absolute path to the file}'
     #Specify the name of the project to generate report
     $ProjectName = 'sp01'
     #Specify if all project mappings of this project are selected to generate report
     $IsSelectAllMappings = $true;
     #Specify the folder path of the report file to download
-    $ReportFolderPath = 'C:\Data'
+    $ReportFolderPath = '{The absolute path to the folder}'
     $project = Get-ProjectByName -ProjectName $ProjectName
     $mappings = New-Object System.Collections.ArrayList;
     if ($null -ne $FilePath -and !$IsSelectAllMappings) {

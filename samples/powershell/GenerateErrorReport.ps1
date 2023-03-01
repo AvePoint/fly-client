@@ -2,14 +2,14 @@ Try {
     [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.SecurityProtocolType]::Tls12
     Import-Module ((Split-Path -Parent $MyInvocation.MyCommand.Definition) + "\Common.ps1") -Force
     Import-Module -Name "Fly.Client"
-    #Get the global configuration object to set Fly_API_Endpoint and your access token
+    #Get the global configuration object to set Fly_API_Endpoint and your access token, please refer to Fly user guide on how to get them
     $Configuration = Get-Configuration
     $Configuration["BaseUrl"] = "{Fly_API_Endpoint}"
     $Configuration.AccessToken = "YOUR_BEARER_TOKEN"
     #Specify the names of the project to generate error report
     $ProjectNames = @('Tony SP', 'zz_test_SP')
     #Specify the folder path of error report file to download
-    $ReportFolderPath = 'C:\Data'
+    $ReportFolderPath = '{The absolute path to the folder}'
     $projects = $ProjectNames | ForEach-Object { Get-ProjectByName $PSItem }
     $projectIds = $projects | Select-Object -Property Id | ForEach-Object { "$($_.Id)" }
     #Construct the settings of the error report

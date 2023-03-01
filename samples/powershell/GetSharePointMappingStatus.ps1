@@ -2,16 +2,16 @@ Try {
     [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.SecurityProtocolType]::Tls12
     Import-Module ((Split-Path -Parent $MyInvocation.MyCommand.Definition) + "\Common.ps1") -Force
     Import-Module -Name "Fly.Client"
-    #Get the global configuration object to set Fly_API_Endpoint and your access token
+    #Get the global configuration object to set Fly_API_Endpoint and your access token, please refer to Fly user guide on how to get them
     $Configuration = Get-Configuration
     $Configuration["BaseUrl"] = "{Fly_API_Endpoint}"
     $Configuration.AccessToken = "YOUR_BEARER_TOKEN"
-    #Specify the file path of the project mappings to retrieve status, only support csv format
-    $FilePath = 'C:\Data\50 mapping SP.csv'
+    #Specify the file path of the project mappings to retrieve status, please refer to the csv format of importing project mapping in Fly UI
+    $FilePath = '{The absolute path to the file}'
     #Specify the name of the project to retrieve mappings
     $ProjectName = '11'
-    #Specify the file path of the retrieved project mappings result, only support csv format
-    $MappingResult = 'C:\Data\mapping result.csv'
+    #Specify the file path of the retrieved project mappings result
+    $MappingResult = '{The absolute path to the file}'
     $project = Get-ProjectByName -ProjectName $ProjectName
     $mappings = New-Object System.Collections.ArrayList;
     $targetMappings = Import-Csv -Path $FilePath
