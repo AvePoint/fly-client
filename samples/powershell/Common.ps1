@@ -1,3 +1,5 @@
+#Common functions and types used by sample scripts
+
 Add-Type -TypeDefinition @" 
     public enum PlatformType {
         SharePoint = 2
@@ -49,6 +51,22 @@ Add-Type -TypeDefinition @"
     }
 "@
 
+<#
+.SYNOPSIS
+
+Check if the project name available
+
+.DESCRIPTION
+
+Check if the project name available
+
+.PARAMETER ProjectName
+The name of the project which you want to check
+
+.OUTPUTS
+
+Boolean, True if the project name is available
+#>
 function Resolve-ProjectName {
     [CmdletBinding()]
     Param (
@@ -66,6 +84,22 @@ function Resolve-ProjectName {
     }
 }
 
+<#
+.SYNOPSIS
+
+Get the connection by name
+
+.DESCRIPTION
+
+Get the connection by name
+
+.PARAMETER ConnectionName
+The name of the connection
+
+.OUTPUTS
+
+ConnectionSummaryModel, the object model of the connection
+#>
 function Get-ConnectionByName {
     [CmdletBinding()]
     Param (
@@ -92,6 +126,22 @@ function Get-ConnectionByName {
     }
 }
 
+<#
+.SYNOPSIS
+
+Get the policy by name
+
+.DESCRIPTION
+
+Get the policy by name
+
+.PARAMETER PolicyName
+The name of the policy
+
+.OUTPUTS
+
+PolicySummaryModel, the object model of the policy
+#>
 function Get-PolicyByName {
     [CmdletBinding()]
     Param (
@@ -118,6 +168,22 @@ function Get-PolicyByName {
     }
 }
 
+<#
+.SYNOPSIS
+
+Get the tag by name
+
+.DESCRIPTION
+
+Get the tag by name
+
+.PARAMETER TagName
+The name of the tag
+
+.OUTPUTS
+
+TagSummaryModel, the object model of the tag
+#>
 function Get-TagByName {
     [CmdletBinding()]
     Param (
@@ -144,6 +210,22 @@ function Get-TagByName {
     }
 }
 
+<#
+.SYNOPSIS
+
+Get the project by name
+
+.DESCRIPTION
+
+Get the project by name
+
+.PARAMETER ProjectName
+The name of the project
+
+.OUTPUTS
+
+ProjectSummaryModel, the object model of the project
+#>
 function Get-ProjectByName {
     [CmdletBinding()]
     Param (
@@ -170,6 +252,22 @@ function Get-ProjectByName {
     }
 }
 
+<#
+.SYNOPSIS
+
+Convert the string value of object level to integer, only support SharePoint object for now
+
+.DESCRIPTION
+
+Convert the string value of object level to integer, only support SharePoint object for now
+
+.PARAMETER Level
+The string value of object level
+
+.OUTPUTS
+
+The integer value of object level
+#>
 function Get-DataType {
     param (
         [Parameter(Position = 0, ValueFromPipelineByPropertyName = $true, Mandatory = $true)]
@@ -188,6 +286,21 @@ function Get-DataType {
     }
 }
 
+<#
+.SYNOPSIS
+
+Output the error details of ErrorRecord
+
+.DESCRIPTION
+
+Output the error details of ErrorRecord
+
+.PARAMETER Level
+The information of ErrorRecord
+
+.OUTPUTS
+
+#>
 function ErrorDetail {
     [CmdletBinding()]
     Param (
@@ -201,6 +314,6 @@ function ErrorDetail {
         if ($Error.ErrorDetails.Message) {
             Write-Host $Error.ErrorDetails.Message -ForegroundColor Red
         }
-        Write-Error $Error
+        Write-Error $Error.Exception
     }
 }
