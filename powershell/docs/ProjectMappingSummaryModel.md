@@ -33,7 +33,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$ProjectMappingSummaryModel = Initialize-FLY.ClientProjectMappingSummaryModel  -ProjectId null `
+$ProjectMappingSummaryModel = Initialize-Fly.ClientProjectMappingSummaryModel  -ProjectId null `
  -SourceType null `
  -SourcePlatform null `
  -SourceName null `

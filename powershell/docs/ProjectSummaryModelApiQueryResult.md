@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$ProjectSummaryModelApiQueryResult = Initialize-FLY.ClientProjectSummaryModelApiQueryResult  -NextLink null `
+$ProjectSummaryModelApiQueryResult = Initialize-Fly.ClientProjectSummaryModelApiQueryResult  -NextLink null `
  -VarData null
 ```
 

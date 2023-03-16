@@ -1,28 +1,27 @@
-# FLY.Client.FLY.Client\Api.PoliciesApi
+# Fly.Client.Fly.Client\Api.FlyTagsApi
 
 All URIs are relative to *{Fly_API_Endpoint}*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**Get-Policies**](PoliciesApi.md#Get-Policies) | **GET** /policies/summaries | Get policy summaries by paging query  supported sort fields: name, description, lastModifyTime
+[**Get-FlyTags**](FlyTagsApi.md#Get-FlyTags) | **GET** /tags/summaries | Get tags by paging query  supported sort fields: name, description
 
 
-<a name="Get-Policies"></a>
-# **Get-Policies**
-> PolicySummaryModelApiQueryResult Get-Policies<br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-PlatformType] <PSCustomObject><br>
+<a name="Get-FlyTags"></a>
+# **Get-FlyTags**
+> TagSummaryModelApiQueryResult Get-FlyTags<br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Search] <String><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-SortBy] <String><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-SortOrder] <PSCustomObject><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Top] <System.Nullable[Int32]><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Skip] <System.Nullable[Int32]><br>
 
-Get policy summaries by paging query  supported sort fields: name, description, lastModifyTime
+Get tags by paging query  supported sort fields: name, description
 
 ### Example
 ```powershell
-# general setting of the PowerShell module, e.g. base URL, authentication, etc
-$Configuration = Get-Configuration
+# General setting of the PowerShell module, e.g. base URL, authentication, etc
+$Configuration = Get-FlyConfiguration
 # Configure Bearer token for authorization: Bearer
 $Configuration.AccessToken = "YOUR_BEARER_TOKEN"
 
@@ -30,18 +29,17 @@ $Configuration.AccessToken = "YOUR_BEARER_TOKEN"
 $Configuration["BaseUrl"] = "{Fly_API_Endpoint}"
 
 
-$PlatformType = New-PlatformType # PlatformType | The platform type of the policy (optional)
 $Search = "MySearch" # String | Search by name field (optional)
 $SortBy = "MySortBy" # String | Order by one field (optional)
 $SortOrder = New-SortOrder # SortOrder | Order by type (optional)
 $Top = 56 # Int32 | Define the number of records you want to return, default value is 20 (optional)
 $Skip = 56 # Int32 | Define the number of records you want to skip, default value is 0 (optional)
 
-# Get policy summaries by paging query  supported sort fields: name, description, lastModifyTime
+# Get tags by paging query  supported sort fields: name, description
 try {
-    $Result = Get-Policies -PlatformType $PlatformType -Search $Search -SortBy $SortBy -SortOrder $SortOrder -Top $Top -Skip $Skip
+    $Result = Get-FlyTags -Search $Search -SortBy $SortBy -SortOrder $SortOrder -Top $Top -Skip $Skip
 } catch {
-    Write-Host ("Exception occurred when calling Get-Policies: {0}" -f ($_.ErrorDetails | ConvertFrom-Json))
+    Write-Host ("Exception occurred when calling Get-FlyTags: {0}" -f ($_.ErrorDetails | ConvertFrom-Json))
     Write-Host ("Response headers: {0}" -f ($_.Exception.Response.Headers | ConvertTo-Json))
 }
 ```
@@ -50,7 +48,6 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **PlatformType** | [**PlatformType**](PlatformType.md)| The platform type of the policy | [optional] 
  **Search** | **String**| Search by name field | [optional] 
  **SortBy** | **String**| Order by one field | [optional] 
  **SortOrder** | [**SortOrder**](SortOrder.md)| Order by type | [optional] 
@@ -59,7 +56,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**PolicySummaryModelApiQueryResult**](PolicySummaryModelApiQueryResult.md) (PSCustomObject)
+[**TagSummaryModelApiQueryResult**](TagSummaryModelApiQueryResult.md) (PSCustomObject)
 
 ### Authorization
 

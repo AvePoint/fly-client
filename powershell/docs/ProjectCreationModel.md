@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$ProjectCreationModel = Initialize-FLY.ClientProjectCreationModel  -Name null `
+$ProjectCreationModel = Initialize-Fly.ClientProjectCreationModel  -Name null `
  -SourcePlatform null `
  -SourceConnectionId null `
  -DestinationPlatform null `

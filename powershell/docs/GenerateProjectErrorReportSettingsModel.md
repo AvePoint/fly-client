@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$GenerateProjectErrorReportSettingsModel = Initialize-FLY.ClientGenerateProjectErrorReportSettingsModel  -TimeZone null `
+$GenerateProjectErrorReportSettingsModel = Initialize-Fly.ClientGenerateProjectErrorReportSettingsModel  -TimeZone null `
  -ReportFileType null `
  -ProjectIds null
 ```

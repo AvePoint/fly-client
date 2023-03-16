@@ -18,7 +18,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$PolicySummaryModel = Initialize-FLY.ClientPolicySummaryModel  -Platform null `
+$PolicySummaryModel = Initialize-Fly.ClientPolicySummaryModel  -Platform null `
  -IsDefault null `
  -IsInUse null `
  -Name null `

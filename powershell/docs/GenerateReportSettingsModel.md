@@ -19,7 +19,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$GenerateReportSettingsModel = Initialize-FLY.ClientGenerateReportSettingsModel  -IncludeMappingSummary null `
+$GenerateReportSettingsModel = Initialize-Fly.ClientGenerateReportSettingsModel  -IncludeMappingSummary null `
  -IncludeDetails null `
  -ReportItemStatus null `
  -ReportFileType null `

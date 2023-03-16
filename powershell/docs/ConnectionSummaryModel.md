@@ -17,7 +17,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$ConnectionSummaryModel = Initialize-FLY.ClientConnectionSummaryModel  -ConnectionType null `
+$ConnectionSummaryModel = Initialize-Fly.ClientConnectionSummaryModel  -ConnectionType null `
  -ConnectionSide null `
  -Name null `
  -Description null `

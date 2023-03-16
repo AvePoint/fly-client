@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$GenerateReportJobModelApiQueryResult = Initialize-FLY.ClientGenerateReportJobModelApiQueryResult  -NextLink null `
+$GenerateReportJobModelApiQueryResult = Initialize-Fly.ClientGenerateReportJobModelApiQueryResult  -NextLink null `
  -VarData null
 ```
 

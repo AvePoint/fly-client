@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$MappingJobProgressDetailModel = Initialize-FLY.ClientMappingJobProgressDetailModel  -TotalCount null
+$MappingJobProgressDetailModel = Initialize-Fly.ClientMappingJobProgressDetailModel  -TotalCount null
 ```
 
 - Convert the resource to JSON
