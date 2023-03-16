@@ -67,7 +67,7 @@ The name of the project which you want to check
 
 Boolean, True if the project name is available
 #>
-function Resolve-ProjectName {
+function Resolve-FlyProjectName {
     [CmdletBinding()]
     Param (
         [Parameter(Position = 0, ValueFromPipelineByPropertyName = $true, Mandatory = $true)]
@@ -76,8 +76,8 @@ function Resolve-ProjectName {
     )
 
     Process {
-        'Calling method: Resolve-ProjectName' | Write-Debug
-        $notExist = Invoke-CheckProjectExist -Name $ProjectName
+        'Calling method: Resolve-FlyProjectName' | Write-Debug
+        $notExist = Invoke-FlyCheckProjectExist -Name $ProjectName
         if (!$notExist) {
             throw ('The project "{0}" already exists. Configure a unique name for the project.' -f $ProjectName)
         }
@@ -100,7 +100,7 @@ The name of the connection
 
 ConnectionSummaryModel, the object model of the connection
 #>
-function Get-ConnectionByName {
+function Get-FlyConnectionByName {
     [CmdletBinding()]
     Param (
         [Parameter(Position = 0, ValueFromPipelineByPropertyName = $true, Mandatory = $true)]
@@ -109,11 +109,11 @@ function Get-ConnectionByName {
     )
 
     Process {
-        'Calling method: Get-ConnectionByName' | Write-Debug
+        'Calling method: Get-FlyConnectionByName' | Write-Debug
         $top = 200;
         $skip = 0;
         while ($true) {
-            $connections = Get-Connections -Search $ConnectionName -Top $top -Skip $skip
+            $connections = Get-FlyConnections -Search $ConnectionName -Top $top -Skip $skip
             $result = $connections.data | Where-Object { $_.Name -eq $ConnectionName } | Select-Object -First 1
             if ($null -ne $result) {
                 return $result
@@ -142,7 +142,7 @@ The name of the policy
 
 PolicySummaryModel, the object model of the policy
 #>
-function Get-PolicyByName {
+function Get-FlyPolicyByName {
     [CmdletBinding()]
     Param (
         [Parameter(Position = 0, ValueFromPipelineByPropertyName = $true, Mandatory = $true)]
@@ -151,11 +151,11 @@ function Get-PolicyByName {
     )
 
     Process {
-        'Calling method: Get-PolicyByName' | Write-Debug
+        'Calling method: Get-FlyPolicyByName' | Write-Debug
         $top = 200;
         $skip = 0;
         while ($true) {
-            $policies = Get-Policies -PlatformType ([PlatformType]::SharePoint).Value__ -Search $PolicyName
+            $policies = Get-FlyPolicies -PlatformType ([PlatformType]::SharePoint).Value__ -Search $PolicyName
             $result = $policies.data | Where-Object { $_.Name -eq $PolicyName } | Select-Object -First 1
             if ($null -ne $result) {
                 return $result
@@ -184,7 +184,7 @@ The name of the tag
 
 TagSummaryModel, the object model of the tag
 #>
-function Get-TagByName {
+function Get-FlyTagByName {
     [CmdletBinding()]
     Param (
         [Parameter(Position = 0, ValueFromPipelineByPropertyName = $true, Mandatory = $true)]
@@ -193,11 +193,11 @@ function Get-TagByName {
     )
 
     Process {
-        'Calling method: Get-TagByName' | Write-Debug
+        'Calling method: Get-FlyTagByName' | Write-Debug
         $top = 200;
         $skip = 0;
         while ($true) {
-            $tags = Get-Tags -Search $TagName
+            $tags = Get-FlyTags -Search $TagName
             $result = $tags.data | Where-Object { $_.Name -eq $TagName } | Select-Object -First 1
             if ($null -ne $result) {
                 return $result
@@ -226,7 +226,7 @@ The name of the project
 
 ProjectSummaryModel, the object model of the project
 #>
-function Get-ProjectByName {
+function Get-FlyProjectByName {
     [CmdletBinding()]
     Param (
         [Parameter(Position = 0, ValueFromPipelineByPropertyName = $true, Mandatory = $true)]
@@ -235,11 +235,11 @@ function Get-ProjectByName {
     )
 
     Process {
-        'Calling method: Get-ProjectByName' | Write-Debug
+        'Calling method: Get-FlyProjectByName' | Write-Debug
         $top = 200;
         $skip = 0;
         while ($true) {
-            $projects = Get-Projects -Search $ProjectName
+            $projects = Get-FlyProjects -Search $ProjectName
             $result = $projects.data | Where-Object { $_.Name -eq $ProjectName } | Select-Object -First 1
             if ($null -ne $result) {
                 return $result
@@ -268,7 +268,7 @@ The string value of object level
 
 The integer value of object level
 #>
-function Get-DataType {
+function Get-FlyDataType {
     param (
         [Parameter(Position = 0, ValueFromPipelineByPropertyName = $true, Mandatory = $true)]
         [String]

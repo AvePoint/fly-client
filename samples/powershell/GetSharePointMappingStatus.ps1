@@ -3,7 +3,7 @@ Try {
     Import-Module ((Split-Path -Parent $MyInvocation.MyCommand.Definition) + "\Common.ps1") -Force
     Import-Module -Name "Fly.Client"
     #Get the global configuration object to set Fly_API_Endpoint and your access token, please refer to Fly user guide on how to get them
-    $Configuration = Get-Configuration
+    $Configuration = Get-FlyConfiguration
     $Configuration["BaseUrl"] = "{Fly_API_Endpoint}"
     $Configuration.AccessToken = "YOUR_BEARER_TOKEN"
     #Specify the file path of the project mappings to retrieve status, please refer to the csv format of importing project mapping in Fly UI
@@ -12,11 +12,11 @@ Try {
     $ProjectName = '11'
     #Specify the file path of the retrieved project mappings result
     $MappingResult = '{The absolute path to the file}'
-    $project = Get-ProjectByName -ProjectName $ProjectName
+    $project = Get-FlyProjectByName -ProjectName $ProjectName
     $mappings = New-Object System.Collections.ArrayList;
     $targetMappings = Import-Csv -Path $FilePath
     #Retrieve the project mappings from the specified project
-    $allMappings = Get-ProjectMappings -ProjectId $project.Id -Top ([Int32]::MaxValue)
+    $allMappings = Get-FlyProjectMappings -ProjectId $project.Id -Top ([Int32]::MaxValue)
     #Match the project mapping list between csv file and specified project
     foreach ($target in $targetMappings) {
         foreach ($mapping in $allMappings.data) {
