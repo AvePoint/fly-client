@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$PolicySummaryModelApiQueryResult = Initialize-FLY.ClientPolicySummaryModelApiQueryResult  -NextLink null `
+$PolicySummaryModelApiQueryResult = Initialize-Fly.ClientPolicySummaryModelApiQueryResult  -NextLink null `
  -VarData null
 ```
 

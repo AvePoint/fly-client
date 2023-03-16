@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$UrlResultModel = Initialize-FLY.ClientUrlResultModel  -ReportUrl null
+$UrlResultModel = Initialize-Fly.ClientUrlResultModel  -ReportUrl null
 ```
 
 - Convert the resource to JSON

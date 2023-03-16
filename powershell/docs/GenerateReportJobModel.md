@@ -22,7 +22,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$GenerateReportJobModel = Initialize-FLY.ClientGenerateReportJobModel  -Id null `
+$GenerateReportJobModel = Initialize-Fly.ClientGenerateReportJobModel  -Id null `
  -JobType null `
  -Status null `
  -StartTime null `

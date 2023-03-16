@@ -16,7 +16,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$SharePointMappingCreationModel = Initialize-FLY.ClientSharePointMappingCreationModel  -Method null `
+$SharePointMappingCreationModel = Initialize-Fly.ClientSharePointMappingCreationModel  -Method null `
  -ProjectId null `
  -SourceName null `
  -SourceIdentity null `

@@ -17,7 +17,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$MigrationJobSettingsModel = Initialize-FLY.ClientMigrationJobSettingsModel  -Type null `
+$MigrationJobSettingsModel = Initialize-Fly.ClientMigrationJobSettingsModel  -Type null `
  -IsDeleteSource null `
  -ScheduledTime null `
  -IsSelectAll null `

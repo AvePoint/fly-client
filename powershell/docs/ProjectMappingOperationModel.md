@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$ProjectMappingOperationModel = Initialize-FLY.ClientProjectMappingOperationModel  -IsSelectAll null `
+$ProjectMappingOperationModel = Initialize-Fly.ClientProjectMappingOperationModel  -IsSelectAll null `
  -Search null `
  -MappingIds null `
  -Stages null `

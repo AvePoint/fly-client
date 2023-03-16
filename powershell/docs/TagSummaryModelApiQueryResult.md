@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$TagSummaryModelApiQueryResult = Initialize-FLY.ClientTagSummaryModelApiQueryResult  -NextLink null `
+$TagSummaryModelApiQueryResult = Initialize-Fly.ClientTagSummaryModelApiQueryResult  -NextLink null `
  -VarData null
 ```
 

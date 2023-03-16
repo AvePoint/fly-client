@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$ErrorModel = Initialize-FLY.ClientErrorModel  -StatusCode null `
+$ErrorModel = Initialize-Fly.ClientErrorModel  -StatusCode null `
  -ErrorCode null `
  -ErrorMessage null `
  -RequestId null `

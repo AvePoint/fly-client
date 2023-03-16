@@ -1,19 +1,19 @@
-# FLY.Client.FLY.Client\Api.ProjectsApi
+# Fly.Client.Fly.Client\Api.FlyProjectsApi
 
 All URIs are relative to *{Fly_API_Endpoint}*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**Invoke-CheckProjectExist**](ProjectsApi.md#Invoke-CheckProjectExist) | **POST** /projects/validate | Check if the project name already exists
-[**New-Project**](ProjectsApi.md#New-Project) | **POST** /projects | Create a new project
-[**Start-ErrorReportJob**](ProjectsApi.md#start-errorreportjob) | **POST** /projects/reports/mergeerrors | Generate error report per project.
-[**Get-ProjectMappings**](ProjectsApi.md#Get-ProjectMappings) | **GET** /projects/{projectId}/mappings/summaries | Get project mapping summaries by paging query
-[**Get-Projects**](ProjectsApi.md#Get-Projects) | **GET** /projects/summaries | Get project summaries by paging query  supported sort fields: name
+[**Invoke-FlyCheckProjectExist**](FlyProjectsApi.md#Invoke-FlyCheckProjectExist) | **POST** /projects/validate | Check if the project name already exists
+[**New-FlyProject**](FlyProjectsApi.md#New-FlyProject) | **POST** /projects | Create a new project
+[**Start-FlyErrorReportJob**](FlyProjectsApi.md#start-flyerrorreportjob) | **POST** /projects/reports/mergeerrors | Generate error report per project.
+[**Get-FlyProjectMappings**](FlyProjectsApi.md#Get-FlyProjectMappings) | **GET** /projects/{projectId}/mappings/summaries | Get project mapping summaries by paging query
+[**Get-FlyProjects**](FlyProjectsApi.md#Get-FlyProjects) | **GET** /projects/summaries | Get project summaries by paging query  supported sort fields: name
 
 
-<a name="Invoke-CheckProjectExist"></a>
-# **Invoke-CheckProjectExist**
-> Boolean Invoke-CheckProjectExist<br>
+<a name="Invoke-FlyCheckProjectExist"></a>
+# **Invoke-FlyCheckProjectExist**
+> Boolean Invoke-FlyCheckProjectExist<br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Name] <String><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <String><br>
 
@@ -21,8 +21,8 @@ Check if the project name already exists
 
 ### Example
 ```powershell
-# general setting of the PowerShell module, e.g. base URL, authentication, etc
-$Configuration = Get-Configuration
+# General setting of the PowerShell module, e.g. base URL, authentication, etc
+$Configuration = Get-FlyConfiguration
 # Configure Bearer token for authorization: Bearer
 $Configuration.AccessToken = "YOUR_BEARER_TOKEN"
 
@@ -35,9 +35,9 @@ $Id = "38400000-8cf0-11bd-b23e-10b96e4ef00d" # String | The GUID of the project 
 
 # Check if the project name already exists
 try {
-    $Result = Invoke-CheckProjectExist -Name $Name -Id $Id
+    $Result = Invoke-FlyCheckProjectExist -Name $Name -Id $Id
 } catch {
-    Write-Host ("Exception occurred when calling Invoke-CheckProjectExist: {0}" -f ($_.ErrorDetails | ConvertFrom-Json))
+    Write-Host ("Exception occurred when calling Invoke-FlyCheckProjectExist: {0}" -f ($_.ErrorDetails | ConvertFrom-Json))
     Write-Host ("Response headers: {0}" -f ($_.Exception.Response.Headers | ConvertTo-Json))
 }
 ```
@@ -64,17 +64,17 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a name="New-Project"></a>
-# **New-Project**
-> void New-Project<br>
+<a name="New-FlyProject"></a>
+# **New-FlyProject**
+> void New-FlyProject<br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-ProjectCreationModel] <PSCustomObject><br>
 
 Create a new project
 
 ### Example
 ```powershell
-# general setting of the PowerShell module, e.g. base URL, authentication, etc
-$Configuration = Get-Configuration
+# General setting of the PowerShell module, e.g. base URL, authentication, etc
+$Configuration = Get-FlyConfiguration
 # Configure Bearer token for authorization: Bearer
 $Configuration.AccessToken = "YOUR_BEARER_TOKEN"
 
@@ -87,9 +87,9 @@ $ProjectCreationModel = New-ProjectCreationModel -Name "MyName" -SourcePlatform 
 
 # Create a new project
 try {
-    $Result = New-Project -ProjectCreationModel $ProjectCreationModel
+    $Result = New-FlyProject -ProjectCreationModel $ProjectCreationModel
 } catch {
-    Write-Host ("Exception occurred when calling New-Project: {0}" -f ($_.ErrorDetails | ConvertFrom-Json))
+    Write-Host ("Exception occurred when calling New-FlyProject: {0}" -f ($_.ErrorDetails | ConvertFrom-Json))
     Write-Host ("Response headers: {0}" -f ($_.Exception.Response.Headers | ConvertTo-Json))
 }
 ```
@@ -115,17 +115,17 @@ void (empty response body)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a name="start-errorreportjob"></a>
-# **Start-ErrorReportJob**
-> String Start-ErrorReportJob<br>
+<a name="start-flyerrorreportjob"></a>
+# **Start-FlyErrorReportJob**
+> String Start-FlyErrorReportJob<br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-GenerateProjectErrorReportSettingsModel] <PSCustomObject><br>
 
 Generate error report per project.
 
 ### Example
 ```powershell
-# general setting of the PowerShell module, e.g. base URL, authentication, etc
-$Configuration = Get-Configuration
+# General setting of the PowerShell module, e.g. base URL, authentication, etc
+$Configuration = Get-FlyConfiguration
 # Configure Bearer token for authorization: Bearer
 $Configuration.AccessToken = "YOUR_BEARER_TOKEN"
 
@@ -138,9 +138,9 @@ $GenerateProjectErrorReportSettingsModel = New-GenerateProjectErrorReportSetting
 
 # Generate error report per project.
 try {
-    $Result = Start-ErrorReportJob -GenerateProjectErrorReportSettingsModel $GenerateProjectErrorReportSettingsModel
+    $Result = Start-FlyErrorReportJob -GenerateProjectErrorReportSettingsModel $GenerateProjectErrorReportSettingsModel
 } catch {
-    Write-Host ("Exception occurred when calling Start-ErrorReportJob: {0}" -f ($_.ErrorDetails | ConvertFrom-Json))
+    Write-Host ("Exception occurred when calling Start-FlyErrorReportJob: {0}" -f ($_.ErrorDetails | ConvertFrom-Json))
     Write-Host ("Response headers: {0}" -f ($_.Exception.Response.Headers | ConvertTo-Json))
 }
 ```
@@ -166,9 +166,9 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a name="Get-ProjectMappings"></a>
-# **Get-ProjectMappings**
-> ProjectMappingSummaryModelApiQueryResult Get-ProjectMappings<br>
+<a name="Get-FlyProjectMappings"></a>
+# **Get-FlyProjectMappings**
+> ProjectMappingSummaryModelApiQueryResult Get-FlyProjectMappings<br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-ProjectId] <String><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Stages] <PSCustomObject[]><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-StageStatuses] <PSCustomObject[]><br>
@@ -184,8 +184,8 @@ Get project mapping summaries by paging query
 
 ### Example
 ```powershell
-# general setting of the PowerShell module, e.g. base URL, authentication, etc
-$Configuration = Get-Configuration
+# General setting of the PowerShell module, e.g. base URL, authentication, etc
+$Configuration = Get-FlyConfiguration
 # Configure Bearer token for authorization: Bearer
 $Configuration.AccessToken = "YOUR_BEARER_TOKEN"
 
@@ -206,9 +206,9 @@ $Skip = 56 # Int32 | Define the number of records you want to skip, default valu
 
 # Get project mapping summaries by paging query
 try {
-    $Result = Get-ProjectMappings -ProjectId $ProjectId -Stages $Stages -StageStatuses $StageStatuses -Statuses $Statuses -IsScheduled $IsScheduled -Search $Search -SortBy $SortBy -SortOrder $SortOrder -Top $Top -Skip $Skip
+    $Result = Get-FlyProjectMappings -ProjectId $ProjectId -Stages $Stages -StageStatuses $StageStatuses -Statuses $Statuses -IsScheduled $IsScheduled -Search $Search -SortBy $SortBy -SortOrder $SortOrder -Top $Top -Skip $Skip
 } catch {
-    Write-Host ("Exception occurred when calling Get-ProjectMappings: {0}" -f ($_.ErrorDetails | ConvertFrom-Json))
+    Write-Host ("Exception occurred when calling Get-FlyProjectMappings: {0}" -f ($_.ErrorDetails | ConvertFrom-Json))
     Write-Host ("Response headers: {0}" -f ($_.Exception.Response.Headers | ConvertTo-Json))
 }
 ```
@@ -243,9 +243,9 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a name="Get-Projects"></a>
-# **Get-Projects**
-> ProjectSummaryModelApiQueryResult Get-Projects<br>
+<a name="Get-FlyProjects"></a>
+# **Get-FlyProjects**
+> ProjectSummaryModelApiQueryResult Get-FlyProjects<br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-TagIds] <String[]><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Statuses] <PSCustomObject[]><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Types] <PSCustomObject[]><br>
@@ -259,8 +259,8 @@ Get project summaries by paging query  supported sort fields: name
 
 ### Example
 ```powershell
-# general setting of the PowerShell module, e.g. base URL, authentication, etc
-$Configuration = Get-Configuration
+# General setting of the PowerShell module, e.g. base URL, authentication, etc
+$Configuration = Get-FlyConfiguration
 # Configure Bearer token for authorization: Bearer
 $Configuration.AccessToken = "YOUR_BEARER_TOKEN"
 
@@ -279,9 +279,9 @@ $Skip = 56 # Int32 | Define the number of records you want to skip, default valu
 
 # Get project summaries by paging query  supported sort fields: name
 try {
-    $Result = Get-Projects -TagIds $TagIds -Statuses $Statuses -Types $Types -Search $Search -SortBy $SortBy -SortOrder $SortOrder -Top $Top -Skip $Skip
+    $Result = Get-FlyProjects -TagIds $TagIds -Statuses $Statuses -Types $Types -Search $Search -SortBy $SortBy -SortOrder $SortOrder -Top $Top -Skip $Skip
 } catch {
-    Write-Host ("Exception occurred when calling Get-Projects: {0}" -f ($_.ErrorDetails | ConvertFrom-Json))
+    Write-Host ("Exception occurred when calling Get-FlyProjects: {0}" -f ($_.ErrorDetails | ConvertFrom-Json))
     Write-Host ("Response headers: {0}" -f ($_.Exception.Response.Headers | ConvertTo-Json))
 }
 ```

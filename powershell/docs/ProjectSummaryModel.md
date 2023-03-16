@@ -27,7 +27,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$ProjectSummaryModel = Initialize-FLY.ClientProjectSummaryModel  -SourcePlatform null `
+$ProjectSummaryModel = Initialize-Fly.ClientProjectSummaryModel  -SourcePlatform null `
  -DestinationPlatform null `
  -PolicyName null `
  -TagNames null `

@@ -1,29 +1,28 @@
-# FLY.Client.FLY.Client\Api.ConnectionsApi
+# Fly.Client.Fly.Client\Api.FlyPoliciesApi
 
 All URIs are relative to *{Fly_API_Endpoint}*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**Get-Connections**](ConnectionsApi.md#Get-Connections) | **GET** /connections/summaries | Get connections by paging query  supported sort fields: name, type
+[**Get-FlyPolicies**](FlyPoliciesApi.md#Get-FlyPolicies) | **GET** /policies/summaries | Get policy summaries by paging query  supported sort fields: name, description, lastModifyTime
 
 
-<a name="Get-Connections"></a>
-# **Get-Connections**
-> ConnectionSummaryModelApiQueryResult Get-Connections<br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Types] <PSCustomObject[]><br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Sides] <PSCustomObject[]><br>
+<a name="Get-FlyPolicies"></a>
+# **Get-FlyPolicies**
+> PolicySummaryModelApiQueryResult Get-FlyPolicies<br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-PlatformType] <PSCustomObject><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Search] <String><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-SortBy] <String><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-SortOrder] <PSCustomObject><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Top] <System.Nullable[Int32]><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Skip] <System.Nullable[Int32]><br>
 
-Get connections by paging query  supported sort fields: name, type
+Get policy summaries by paging query  supported sort fields: name, description, lastModifyTime
 
 ### Example
 ```powershell
-# general setting of the PowerShell module, e.g. base URL, authentication, etc
-$Configuration = Get-Configuration
+# General setting of the PowerShell module, e.g. base URL, authentication, etc
+$Configuration = Get-FlyConfiguration
 # Configure Bearer token for authorization: Bearer
 $Configuration.AccessToken = "YOUR_BEARER_TOKEN"
 
@@ -31,19 +30,18 @@ $Configuration.AccessToken = "YOUR_BEARER_TOKEN"
 $Configuration["BaseUrl"] = "{Fly_API_Endpoint}"
 
 
-$Types = "0" # PlatformType[] | The filter condition by connection type (optional)
-$Sides = "0" # ConnectionSide[] | The filter condition by connection usage (optional)
+$PlatformType = New-PlatformType # PlatformType | The platform type of the policy (optional)
 $Search = "MySearch" # String | Search by name field (optional)
 $SortBy = "MySortBy" # String | Order by one field (optional)
 $SortOrder = New-SortOrder # SortOrder | Order by type (optional)
 $Top = 56 # Int32 | Define the number of records you want to return, default value is 20 (optional)
 $Skip = 56 # Int32 | Define the number of records you want to skip, default value is 0 (optional)
 
-# Get connections by paging query  supported sort fields: name, type
+# Get policy summaries by paging query  supported sort fields: name, description, lastModifyTime
 try {
-    $Result = Get-Connections -Types $Types -Sides $Sides -Search $Search -SortBy $SortBy -SortOrder $SortOrder -Top $Top -Skip $Skip
+    $Result = Get-FlyPolicies -PlatformType $PlatformType -Search $Search -SortBy $SortBy -SortOrder $SortOrder -Top $Top -Skip $Skip
 } catch {
-    Write-Host ("Exception occurred when calling Get-Connections: {0}" -f ($_.ErrorDetails | ConvertFrom-Json))
+    Write-Host ("Exception occurred when calling Get-FlyPolicies: {0}" -f ($_.ErrorDetails | ConvertFrom-Json))
     Write-Host ("Response headers: {0}" -f ($_.Exception.Response.Headers | ConvertTo-Json))
 }
 ```
@@ -52,8 +50,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **Types** | [**PlatformType[]**](PlatformType.md)| The filter condition by connection type | [optional] 
- **Sides** | [**ConnectionSide[]**](ConnectionSide.md)| The filter condition by connection usage | [optional] 
+ **PlatformType** | [**PlatformType**](PlatformType.md)| The platform type of the policy | [optional] 
  **Search** | **String**| Search by name field | [optional] 
  **SortBy** | **String**| Order by one field | [optional] 
  **SortOrder** | [**SortOrder**](SortOrder.md)| Order by type | [optional] 
@@ -62,7 +59,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ConnectionSummaryModelApiQueryResult**](ConnectionSummaryModelApiQueryResult.md) (PSCustomObject)
+[**PolicySummaryModelApiQueryResult**](PolicySummaryModelApiQueryResult.md) (PSCustomObject)
 
 ### Authorization
 

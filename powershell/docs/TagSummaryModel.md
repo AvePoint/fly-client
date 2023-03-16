@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$TagSummaryModel = Initialize-FLY.ClientTagSummaryModel  -Name null `
+$TagSummaryModel = Initialize-Fly.ClientTagSummaryModel  -Name null `
  -Description null `
  -CreateTime null `
  -CreateBy null `
