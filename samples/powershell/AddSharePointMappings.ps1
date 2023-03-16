@@ -4,29 +4,29 @@ Try {
     Import-Module ((Split-Path -Parent $MyInvocation.MyCommand.Definition) + "\Common.ps1") -Force
     Import-Module -Name "Fly.Client"
     #Get the global configuration object to set Fly_API_Endpoint and your access token, please refer to Fly user guide on how to get them
-    $Configuration = Get-Configuration
+    $Configuration = Get-FlyConfiguration
     $Configuration["BaseUrl"] = "{Fly_API_Endpoint}"
     $Configuration.AccessToken = "YOUR_BEARER_TOKEN"
     #Specify the file path of the project mappings to import, please refer to the csv format of importing project mapping in Fly UI
     $FilePath = '{The absolute path to the file}'
     #Specify the name of the project to import
     $ProjectName = '11'
-    $project = Get-ProjectByName -ProjectName $ProjectName
+    $project = Get-FlyProjectByName -ProjectName $ProjectName
     $mappings = New-Object System.Collections.ArrayList;
     $importedMappings = Import-Csv -Path $FilePath
     #Construct the project mapping list to import
     foreach ($mapping in $importedMappings) {
         $item = [PSCustomObject]@{
             "sourceIdentity"      = $mapping.'Source URL'
-            "sourceType"          = Get-DataType $mapping.'Source object level'
+            "sourceType"          = Get-FlyDataType $mapping.'Source object level'
             "destinationIdentity" = $mapping.'Destination URL'
-            "destinationType"     = Get-DataType $mapping.'Destination object level'
+            "destinationType"     = Get-FlyDataType $mapping.'Destination object level'
             "method"              = If ($mapping.Method -eq 'Merge') { 1 } Else { 0 }
         }
         [void]$mappings.Add($item);
     }
     #Import project mapping list to the project
-    $result = Add-SharePointMappings -ProjectId $project.Id -SharePointMappingCreationModel $mappings.ToArray()
+    $result = Add-FlySharePointMappings -ProjectId $project.Id -SharePointMappingCreationModel $mappings.ToArray()
     if ($result) {
         Write-Host 'Successfully added the mappings to the project.' -ForegroundColor Green
     }

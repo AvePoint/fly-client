@@ -3,7 +3,7 @@ Try {
     Import-Module ((Split-Path -Parent $MyInvocation.MyCommand.Definition) + "\Common.ps1") -Force
     Import-Module -Name "Fly.Client"
     #Get the global configuration object to set Fly_API_Endpoint and your access token, please refer to Fly user guide on how to get them
-    $Configuration = Get-Configuration
+    $Configuration = Get-FlyConfiguration
     $Configuration["BaseUrl"] = "{Fly_API_Endpoint}"
     $Configuration.AccessToken = "YOUR_BEARER_TOKEN"
     #Specify the file path of the project mappings to generate report, please refer to the csv format of importing project mapping in Fly UI,
@@ -15,11 +15,11 @@ Try {
     $IsSelectAllMappings = $true;
     #Specify the folder path of the report file to download
     $ReportFolderPath = '{The absolute path to the folder}'
-    $project = Get-ProjectByName -ProjectName $ProjectName
+    $project = Get-FlyProjectByName -ProjectName $ProjectName
     $mappings = New-Object System.Collections.ArrayList;
     if ($null -ne $FilePath -and !$IsSelectAllMappings) {
         $targetMappings = Import-Csv -Path $FilePath
-        $allMappings = Get-ProjectMappings -ProjectId $project.Id -Top ([Int32]::MaxValue)
+        $allMappings = Get-FlyProjectMappings -ProjectId $project.Id -Top ([Int32]::MaxValue)
         #Match the project mappings between csv file and specified project
         foreach ($target in $targetMappings) {
             foreach ($mapping in $allMappings.data) {
@@ -49,16 +49,16 @@ Try {
         $reportSetting.mappingIds = @($mappingIds)
     }
     #Trigger the migration report job and get the job id
-    $jobId = Start-SharePointReportJob -ProjectId $project.Id -GenerateReportSettingsModel $reportSetting
+    $jobId = Start-FlySharePointReportJob -ProjectId $project.Id -GenerateReportSettingsModel $reportSetting
     #Monitor the job status and download the report file when job is finished
     while ($true) {
         Write-Host 'The report generation job is running.' -ForegroundColor Green
         Start-Sleep -Seconds 60
-        $job = Get-ReportJobs -RequestBody @($jobId)
+        $job = Get-FlyReportJobs -RequestBody @($jobId)
         $jobStatus = $job.data[0].Status
         if ($jobStatus -eq [MappingJobStatus]::Finished -or $jobStatus -eq [MappingJobStatus]::FinishWithException) {
             Write-Host 'The report generation job is finished.' -ForegroundColor Green
-            $result = Get-ReportUrl -JobId $jobId
+            $result = Get-FlyReportUrl -JobId $jobId
             if ($null -ne $result.ReportUrl) {
                 $fileName = Split-Path $([uri]$result.ReportUrl).AbsolutePath -Leaf
                 $filePath = Join-Path -Path $ReportFolderPath -ChildPath $fileName

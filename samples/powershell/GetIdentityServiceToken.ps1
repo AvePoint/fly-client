@@ -47,17 +47,13 @@ function New-JwtRsaSignature {
     )
     PROCESS {
         'Calling method: New-JwtRsaSignature' | Write-Debug
-        $csp = New-Object System.Security.Cryptography.CspParameters
-        $csp.KeyContainerName = $SigningCertificate.PrivateKey.CspKeyContainerInfo.KeyContainerName
-        $csp.Flags = [System.Security.Cryptography.CspProviderFlags]::UseMachineKeyStore
-        $rsa = New-Object System.Security.Cryptography.RSACryptoServiceProvider($csp)
-        $rsaSigFormatter = New-Object System.Security.Cryptography.RSAPKCS1SignatureFormatter($rsa)
-        $rsaSigFormatter.SetHashAlgorithm("SHA256")
+        $rsa = ([System.Security.Cryptography.X509Certificates.RSACertificateExtensions]::GetRSAPrivateKey($SigningCertificate))
+        if ($null -eq $rsa) {
+            # Requiring the private key to be present.
+            throw "There's no private key in the supplied certificate." 
+        }
         [byte[]]$message = [System.Text.Encoding]::UTF8.GetBytes($JsonWebToken)
-        $SHA256 = New-Object System.Security.Cryptography.SHA256CryptoServiceProvider
-        [byte[]]$messageDigest = $SHA256.ComputeHash($message)
-        $SHA256.Dispose()
-        $sigBytes = $rsaSigFormatter.CreateSignature($messageDigest)
+        $sigBytes = $rsa.SignData($message, [Security.Cryptography.HashAlgorithmName]::SHA256, [Security.Cryptography.RSASignaturePadding]::Pkcs1)
         return ConvertTo-Base64UrlEncodedString -Bytes $sigBytes
     }
 }
@@ -114,5 +110,5 @@ function Convert-DateTimeToEpoch {
 }
 
 [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.SecurityProtocolType]::Tls12
-$cert = (Get-ChildItem -path 'Cert:\*304CAFB0719971D7F180DE983F649DFAC85D47D3' -Recurse)[0]
-Get-IdentityServiceToken -IdentityServiceUri "https://identity-public.sharepointguild.com" -Scope fly.graph.readwrite.all -ClientId "4aeeb44e-325a-4002-a36d-2986b65cad0a" -Cert $cert > C:\Data\token.txt
+$cert = (Get-ChildItem -Path 'Cert:\LocalMachine\My\304CAFB0719971D7F180DE983F649DFAC85D47D3' -Recurse)[0]
+Get-IdentityServiceToken -IdentityServiceUri "https://identity.avepointonlineservices.com" -Scope fly.graph.readwrite.all -ClientId "4aeeb44e-325a-4002-a36d-2986b65cad0a" -Cert $cert > C:\Data\token.txt
