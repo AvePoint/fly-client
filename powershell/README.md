@@ -6,6 +6,12 @@
 ## Frameworks supported
 - PowerShell 5.1 or later
 
+<a name="module-supported"></a>
+## Module supported
+- SharePoint Online
+
+Currently we only support SharePoint Online module for PowerShell client, other modules are on the way.
+
 <a name="installation"></a>
 ## Installation
 
@@ -62,7 +68,7 @@ Start-FlySharePointMigration `
     -Project "project name" `
     -Mode "FullMigration" `
     -Mappings "csv file contains all mappings to run job" `
-    -ScheduleTime (Get-Date -Date "2023-10-14 22:00:00")
+    -ScheduleTime (Get-Date -Date "2023-10-14 22:00:00").ToUniversalTime()
 ```
 Both ```-Mappings``` and ```-ScheduleTime``` are optional. If you omit the ```-Mappings``` parameter, this command will try to start jobs for all the mappings in the specified project. If you omit the ```-ScheduleTime``` parameter, this command will try to schedule the mappings as soon as possible.
 
@@ -108,7 +114,7 @@ If you omit ```-Include``` parameter, only summary information will be included 
 
 ## Documentation for Cmdlets
 
-We also provided some other powershell commands with which you can automatic your migration process. You can refer to the [**documentation**](docs/FlyApi.md) for more details.
+We also provided some other powershell commands with which you can automate your migration process. You can refer to the [**documentation**](docs/FlyApi.md) for more details.
 
 ## About Fly 
 

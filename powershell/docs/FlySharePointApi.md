@@ -167,14 +167,14 @@ Name | Type | Description  | Notes
  **Project** | **String**| Specify the name of the project to run job. | 
  **Mode** | **String**| Specify the mode of the migration job, use Tab for available values. | 
  **Mappings** | **String**| Specify the csv file to specific project mappings to run job, optional if you want to specify all of the mappings of the project. | [optional]
- **ScheduleTime** | **DateTime**| Specify the time when you want the job to be scheduled. By default the job will be executed as soon as possible, optional for no schedule. | [optional]
+ **ScheduleTime** | **DateTime**| Specify the UTC time when you want the job to be scheduled. By default the job will be executed as soon as possible, optional for no schedule. | [optional]
 
 ### Example
 ```powershell
 $Project = "ProjectName" 
 $Mode = 'FullMigration' 
 $Mappings = "Mappings_File" 
-$ScheduleTime = (Get-Date -Year 2023 -Month 10 -Day 10) 
+$ScheduleTime = (Get-Date -Year 2023 -Month 10 -Day 10).ToUniversalTime() 
 
 Start-FlySharePointMigration -Project $Project -Mode $Mode -Mappings $Mappings -ScheduleTime $ScheduleTime
 ```
