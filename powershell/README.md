@@ -1,4 +1,4 @@
-# Fly.Client - the PowerShell module for the Fly SDK API
+# FLY.Client - the PowerShell module for the Fly SDK API
 
 - SDK version: 1.1.3
 
@@ -58,6 +58,8 @@ Import-FlySharePointMappings `
     -Project "project name" `
     -Path "csv file path contains mapping information to be added to the project"
 ```
+You can check the csv template of the mappings file from [**here**](templates/Fly_SharePoint_Online_Import_Mapping_Template.csv).
+
 Although there’s no hard limit for the number of mappings in a single project, we don’t recommend more than 10000 mappings as it will make it difficult to manage and organize these mappings.
 Usually for easier management work, we recommend less than 2000 mappings in a single project. Another recommended way to organize your mappings and projects is based on your organization structure or business units.
 

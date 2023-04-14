@@ -1,0 +1,6 @@
+﻿Source URL,Source object level,Destination URL,Destination object level,Method
+https://contoso/sites/sc,Site collection,https://descontoso/sites/sc,Site collection,Merge
+https://contoso/sites/sc,Site collection,https://descontoso/sites/sc/sub,Site,Merge
+https://contoso/sites/sc/sub,Site,https://descontoso/sites/sc/sub,Site,Attach
+https://contoso/sites/sc/sub/list,List,https://descontoso/sites/sc/sub/list,List,Merge
+https://contoso/sites/sc/sub/list/folder,Folder,https://descontoso/sites/sc/sub/list/folder,Folder,Merge

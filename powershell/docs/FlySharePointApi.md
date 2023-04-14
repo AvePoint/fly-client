@@ -83,7 +83,7 @@ Name | Type | Description  | Notes
  **OutFile** | **String**| Specify the csv file path of the project mappings to export. | 
  **Mappings** | **String**| Specify the csv file to specific project mappings to export, optional if you want to export the whole project mappings. | [optional]
  **FileType** | **String**| Specify the format of the generated report file, use Tab for available values, optional if use CSV type. | [optional]
- **TimeZoneOffset** | **String**| Specify the UTC time offset of current browser. This value will be used to adjust time values when generating the report file, optional for UTC timezone. | [optional]
+ **TimeZoneOffset** | **Int32**| Specify the UTC time offset of current browser. This value will be used to adjust time values when generating the report file, optional for UTC timezone. | [optional]
  **Include** | **String**| Specify a list of objects to be included in the migration report, use Tab for available values, optional if you do not export object details. | [optional]
 
 ### Example
