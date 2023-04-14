@@ -31,6 +31,8 @@ Connect-Fly `
 ```
 After you connect to Fly public API, then you can perform various operations like creating projects, adding mappings to projects, running jobs and monitoring mapping migration status, etc.
 
+**Note**: this command is valid for one hour, run the command again in case of timeout or 401(Unauthorized) error code.
+
 ### 2. [**New-FlyMigrationProject**](docs/FlyProjectApi.md#new-flymigrationproject)
 Following PowerShell command will create a SharePoint project:
 ```powershell
@@ -82,7 +84,7 @@ $summary = $data | `
     Group-Object -Property StageStatus | `
     Select-Object Count,Name
 
-If($summary -eq $null -or $summary.Count = 0) {
+If($summary -eq $null -or $summary.Count -eq 0) {
     #this means all mappings are finished and no mapping is in waiting or running status
 }
 ```
