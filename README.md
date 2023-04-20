@@ -2,8 +2,6 @@
 
 *  [**PowerShell**](https://github.com/AvePoint/fly-client/tree/main/powershell)
 
-*  [**Samples**](https://github.com/AvePoint/fly-client/tree/main/samples/powershell)
-
 <br/><br/>
 ## About Fly 
 
