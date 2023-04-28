@@ -54,7 +54,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **Projects** | **String[]**| Specify a list of project names to generate their error report. 
  **OutFolder** | **String**| Specify the folder path of error report file to download. 
- **FileType** | **String**| Specify the format of the generated report file, use Tab for available values, optional if use CSV type. | [optional]
+ **FileType** | **String**| Specify the format of the generated report file, support 'CSV' and 'Excel', optional if use CSV type. | [optional]
  **TimeZoneOffset** | **Int32**| Specify the UTC timezone offset of current browser. This value will be used to adjust time values when generating the report file, optional for UTC timezone. | [optional]
 
 ### Example
