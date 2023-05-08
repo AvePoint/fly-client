@@ -45,8 +45,6 @@ $certificate = (Get-ChildItem -Path 'Cert:\LocalMachine\My\304CAFB0719971D7F180D
 ```
 After you connect to Fly public API, then you can perform various operations like creating projects, adding mappings to projects, running jobs and monitoring mapping migration status, etc.
 
-**Note**: this command is valid for one hour, run the command again in case of timeout or 401(Unauthorized) error code.
-
 ### 2. [**New-FlyMigrationProject**](docs/FlyProjectApi.md#new-flymigrationproject)
 Following PowerShell command will create a SharePoint project:
 ```powershell
@@ -110,13 +108,13 @@ After all the mappings are finished, you can use the following command to genera
 ```powershell
 Export-FlySharePointMigrationReport `
     -Project "project name" `
-    -OutFile "file path to store the generated migration report" `
+    -OutFolder "file path to store the generated migration report" `
     -Mappings "csv file contains all mappings you want to export report of" `
     -FileType "Excel or CSV" `
     -TimeZoneOffset "your timezone offset, this value will be used to adjust time values in the report" `
     -Include "Object status to be included in the generated report"
 ```
-Only ```-Project``` and ```-OutFile``` are required for this command.
+Only ```-Project``` and ```-OutFolder``` are required for this command.
 If you omit the ```-Mappings``` parameter, this command will generate report for all mappings with proper status in this project.
 ```-FileType``` will be defaulted to CSV if you omit it.
 If you omit ```-TimeZoneOffset```, this command assume you want to use UTC time.
@@ -125,6 +123,18 @@ If you omit ```-Include``` parameter, only summary information will be included 
 ## Documentation for Cmdlets
 
 We also provided some other powershell commands with which you can automate your migration process. You can refer to the [**documentation**](docs/FlyApi.md) for more details.
+
+## FAQ
+
+- **Q** How can I find the Fly public API URL when using [**Connect-Fly**](docs/FlyConnectApi.md#connect-fly)?
+  - **A**: The public API URL varies with your data center. Choose the public API URL according to your data center. Please refer to [**Fly user guide**](https://cdn.avepoint.com/assets/webhelp/fly/index.htm#!Documents/usepowershellsdk.htm) for more details.
+- **Q**: What can I do if there is a 401(Unauthorized) error?
+  - **A**: This error code means your access token is expired, normally the token is valid for one hour, you need run [**Connect-Fly**](docs/FlyConnectApi.md#connect-fly) to retrieve the access token again, then continue with the other cmdlets.
+- **Q**: How can I handle 429(Too many request) error?
+  - **A**: You can use following code to wait for the end of Fly public API rate limit, then continue with the other cmdlets.
+    ```powershell
+    Start-Sleep -Seconds 60
+    ```
 
 ## About Fly 
 
