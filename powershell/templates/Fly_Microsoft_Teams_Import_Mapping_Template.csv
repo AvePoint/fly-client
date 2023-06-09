@@ -1,0 +1,6 @@
+﻿Source Team name,Source Team email address,Destination Team name,Destination Team email address,Channel mappings,Source channel name,Destination channel name,Destination channel type
+Team 01,team01T@contososrc.onmicrosoft.com,Team 01,team01@contosodest.onmicrosoft.com,Enabled,Standard Src,Standard Dest,Standard
+Team 01,team01T@contososrc.onmicrosoft.com,Team 01,team01@contosodest.onmicrosoft.com,Enabled,Private Src,Private Dest,Private
+Team 01,team01T@contososrc.onmicrosoft.com,Team 01,team01@contosodest.onmicrosoft.com,Enabled,Shared Src,Shared Dest,Shared
+Team 02,team02T@contososrc.onmicrosoft.com,Team 02,team02@contosodest.onmicrosoft.com,Disabled,,,
+Team 03,team03T@contososrc.onmicrosoft.com,Team 03,team03@contosodest.onmicrosoft.com,Disabled,,,

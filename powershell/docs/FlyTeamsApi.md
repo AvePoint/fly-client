@@ -1,48 +1,48 @@
-# Fly.Client\Api.FlySharePointApi
+# Fly.Client\Api.FlyTeamsApi
 
 Method | Description
 ------------- | -------------
-[**Import-FlySharePointMappings**](FlySharePointApi.md#import-flysharepointmappings) | Add migration mappings into the specified SharePoint project.
-[**Export-FlySharePointMappingStatus**](FlySharePointApi.md#export-flysharepointmappingstatus) | Export the SharePoint migration mapping status to a csv file.
-[**Export-FlySharePointMigrationReport**](FlySharePointApi.md#export-flysharepointmigrationreport) | Generate migration report for the specified project mappings.
-[**Start-FlySharePointVerification**](FlySharePointApi.md#start-flysharepointverification) | Start a verification operation against the selected project mappings.
-[**Start-FlySharePointPreScan**](FlySharePointApi.md#start-flysharepointprescan) | Start a pre-scan job against the selected project mappings.
-[**Start-FlySharePointMigration**](FlySharePointApi.md#start-flysharepointmigration) | Start a migration job against the selected project mappings.
+[**Import-FlyTeamsMappings**](FlyTeamsApi.md#import-flyteamsmappings) | Add migration mappings into the specified Teams project.
+[**Export-FlyTeamsMappingStatus**](FlyTeamsApi.md#export-flyteamsmappingstatus) | Export the Teams migration mapping status to a csv file.
+[**Export-FlyTeamsMigrationReport**](FlyTeamsApi.md#export-flyteamsmigrationreport) | Generate migration report for the specified project mappings.
+[**Start-FlyTeamsVerification**](FlyTeamsApi.md#start-flyteamsverification) | Start a verification operation against the selected project mappings.
+[**Start-FlyTeamsPreScan**](FlyTeamsApi.md#start-flyteamsprescan) | Start a pre-scan job against the selected project mappings.
+[**Start-FlyTeamsMigration**](FlyTeamsApi.md#start-flyteamsmigration) | Start a migration job against the selected project mappings.
 
 
-<a name="import-flysharepointmappings"></a>
-# **Import-FlySharePointMappings**
-> Import-FlySharePointMappings<br>
+<a name="import-flyteamsmappings"></a>
+# **Import-FlyTeamsMappings**
+> Import-FlyTeamsMappings<br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Project] <String><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Path] <String><br>
 
-Add migration mappings into the specified SharePoint project.
+Add migration mappings into the specified Teams project.
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **Project** | **String**| Specify the name of the project to import mappings. | 
- **Path** | **String**| Specify the csv file path of the project mappings to import. You can check the csv template of the mappings file from [**here**](../templates/Fly_SharePoint_Online_Import_Mapping_Template.csv). | 
+ **Path** | **String**| Specify the csv file path of the project mappings to import. You can check the csv template of the mappings file from [**here**](../templates/Fly_Microsoft_Teams_Import_Mapping_Template.csv).| 
 
 ### Example
 ```powershell
 $Project = "ProjectName" 
 $Path = "Import_Mapping_File" 
 
-Import-FlySharePointMappings -Project $Project -Path $Path
+Import-FlyTeamsMappings -Project $Project -Path $Path
 ```
 
 [[Back to top]](#) [[Back to API list]](FlyApi.md#documentation-for-cmdlets) [[Back to README]](../README.md)
 
-<a name="export-flysharepointmappingstatus"></a>
-# **Export-FlySharePointMappingStatus**
-> Export-FlySharePointMappingStatus<br>
+<a name="export-flyteamsmappingstatus"></a>
+# **Export-FlyTeamsMappingStatus**
+> Export-FlyTeamsMappingStatus<br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Project] <String><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-OutFile] <String><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Mappings] <String><br>
 
-Export the SharePoint migration mapping status to a csv file.
+Export the Teams migration mapping status to a csv file.
 
 ### Parameters
 
@@ -58,14 +58,14 @@ $Project = "ProjectName"
 $OutFile = "Export_Mapping_File" 
 $Mappings = "Mappings_File" 
 
-Export-FlySharePointMappingStatus -Project $Project -OutFile $OutFile -Mappings $Mappings
+Export-FlyTeamsMappingStatus -Project $Project -OutFile $OutFile -Mappings $Mappings
 ```
 
 [[Back to top]](#) [[Back to API list]](FlyApi.md#documentation-for-cmdlets) [[Back to README]](../README.md)
 
-<a name="export-flysharepointmigrationreport"></a>
-# **Export-FlySharePointMigrationReport**
-> Export-FlySharePointMigrationReport<br>
+<a name="export-flyteamsmigrationreport"></a>
+# **Export-FlyTeamsMigrationReport**
+> Export-FlyTeamsMigrationReport<br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Project] <String><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-OutFile] <String><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Mappings] <String><br>
@@ -95,14 +95,14 @@ $FileType = "Excel"
 $TimeZoneOffset = -300 
 $Include = @('FailedObjects','WarningObjects','SuccessfulObjects','SkippedObjects','FilterOutObjects','NotFoundObjects','ErrorIgnoredObjects') 
 
-Export-FlySharePointMigrationReport -Project $Project -OutFile $OutFile -Mappings $Mappings -FileType $FileType -TimeZoneOffset $TimeZoneOffset -Include $Include
+Export-FlyTeamsMigrationReport -Project $Project -OutFile $OutFile -Mappings $Mappings -FileType $FileType -TimeZoneOffset $TimeZoneOffset -Include $Include
 ```
 
 [[Back to top]](#) [[Back to API list]](FlyApi.md#documentation-for-cmdlets) [[Back to README]](../README.md)
 
-<a name="start-flysharepointprescan"></a>
-# **Start-FlySharePointPreScan**
-> Start-FlySharePointPreScan<br>
+<a name="start-flyteamsprescan"></a>
+# **Start-FlyTeamsPreScan**
+> Start-FlyTeamsPreScan<br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Project] <String><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Mappings] <String><br>
 
@@ -120,14 +120,14 @@ Name | Type | Description  | Notes
 $Project = "ProjectName" 
 $Mappings = "Mappings_File" 
 
-Start-FlySharePointPreScanJob -Project $Project -Mappings $Mappings
+Start-FlyTeamsPreScanJob -Project $Project -Mappings $Mappings
 ```
 
 [[Back to top]](#) [[Back to API list]](FlyApi.md#documentation-for-cmdlets) [[Back to README]](../README.md)
 
-<a name="start-flysharepointverification"></a>
-# **Start-FlySharePointVerification**
-> Start-FlySharePointVerification<br>
+<a name="start-flyteamsverification"></a>
+# **Start-FlyTeamsVerification**
+> Start-FlyTeamsVerification<br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Project] <String><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Mappings] <String><br>
 
@@ -145,14 +145,14 @@ Name | Type | Description  | Notes
 $Project = "ProjectName" 
 $Mappings = "Mappings_File" 
 
-Start-FlySharePointVerification -Project $Project -Mappings $Mappings
+Start-FlyTeamsVerification -Project $Project -Mappings $Mappings
 ```
 
 [[Back to top]](#) [[Back to API list]](FlyApi.md#documentation-for-cmdlets) [[Back to README]](../README.md)
 
-<a name="start-flysharepointmigration"></a>
-# **Start-FlySharePointMigration**
-> Start-FlySharePointMigration<br>
+<a name="start-flyteamsmigration"></a>
+# **Start-FlyTeamsMigration**
+> Start-FlyTeamsMigration<br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Project] <String><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Mode] <String><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Mappings] <String><br>
@@ -165,7 +165,7 @@ Start a migration job against the selected project mappings.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **Project** | **String**| Specify the name of the project to run job. | 
- **Mode** | **String**| Specify the mode of the migration job, support 'FullMigration', 'IncrementalMigration', 'ErrorOnly' and 'PermissionOnly'. | 
+ **Mode** | **String**| Specify the mode of the migration job, support 'FullMigration', 'IncrementalMigration', 'ErrorOnly' and 'MembershipOnly'. | 
  **Mappings** | **String**| Specify the csv file to specific project mappings to run job, optional if you want to specify all of the mappings of the project. | [optional]
  **ScheduleTime** | **DateTime**| Specify the UTC time when you want the job to be scheduled. By default the job will be executed as soon as possible, optional for no schedule. | [optional]
 
@@ -176,7 +176,7 @@ $Mode = 'FullMigration'
 $Mappings = "Mappings_File" 
 $ScheduleTime = (Get-Date -Year 2023 -Month 10 -Day 10).ToUniversalTime() 
 
-Start-FlySharePointMigration -Project $Project -Mode $Mode -Mappings $Mappings -ScheduleTime $ScheduleTime
+Start-FlyTeamsMigration -Project $Project -Mode $Mode -Mappings $Mappings -ScheduleTime $ScheduleTime
 ```
 
 [[Back to top]](#) [[Back to API list]](FlyApi.md#documentation-for-cmdlets) [[Back to README]](../README.md)
