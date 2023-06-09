@@ -3,6 +3,7 @@
 Method | Description
 ------------- | -------------
 [**New-FlyMigrationProject**](FlyProjectApi.md#new-flymigrationproject) | Create a new migration project.
+[**Import-FlyMigrationProjects**](FlyProjectApi.md#import-flymigrationprojects) | Import migration projects from csv file.
 [**Export-FlyErrorReport**](FlyProjectApi.md#export-flyerrorreport) | Generate error report for the specified.projects.
 
 <a name="New-FlyMigrationProject"></a>
@@ -35,6 +36,30 @@ $Policy = "PolicyName"
 $Tags = @('TagName1','TagName2') 
 
 New-FlyMigrationProject -Name $Name -SourceConnection $SourceConnection -DestinationConnection $DestinationConnection -Policy $Policy -Tags $Tags
+```
+[[Back to top]](#) [[Back to API list]](FlyApi.md#documentation-for-cmdlets) [[Back to README]](../README.md)
+
+<a name="Import-FlyMigrationProjects"></a>
+
+# **Import-FlyMigrationProjects**
+> Import-FlyMigrationProjects<br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Path] <String><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-OutFile] <String><br>
+Import migration projects from csv file.
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **Path** | **String**| Specify the csv file path of the projects to import. You can check the csv template of the projects file from [**here**](../templates/Fly_Import_Projects_Template.csv).
+ **OutFile** | **String**| Specify the csv file path of the import report.  If you do not specify the report path，the report file will be generated in the same directory as the import file. | [optional]
+
+### Example
+```powershell
+$Path = "Import_Projects_File"
+$OutFilePath = "Export_Report_File" 
+
+Import-FlyMigrationProjects -Path $Path -OutFile $OutFilePath
 ```
 [[Back to top]](#) [[Back to API list]](FlyApi.md#documentation-for-cmdlets) [[Back to README]](../README.md)
 

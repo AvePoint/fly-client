@@ -1,6 +1,4 @@
-# FLY.Client - the PowerShell module for the Fly SDK API
-
-- SDK version: 1.1.3
+# Fly.Client - the PowerShell module for the Fly Public API
 
 <a name="frameworks-supported"></a>
 ## Frameworks supported
@@ -8,25 +6,25 @@
 
 <a name="module-supported"></a>
 ## Module supported
+- Exchange Online
 - SharePoint Online
-
-Currently we only support SharePoint Online module for PowerShell client, other modules are on the way.
+- Microsoft 365 Groups
+- Microsoft Teams
 
 <a name="installation"></a>
 ## Installation
 
 To install from PowerShell Gallery (https://www.powershellgallery.com/packages/Fly.Client)
 ```powershell
+Install-Module -Name Fly.Client -Verbose
+```
+Then import module before executing the PowerShell command
+```powershell
 Import-Module -Name Fly.Client -Verbose
 ```
 
-To uninstall the module, simply run:
-```powershell
-Remove-Module -FullyQualifiedName @{ModuleName = "Fly.Client"; ModuleVersion = "1.1.3"}
-```
-
 <a name="how-to-use"></a>
-## How to Use
+## How to use
 ### 1. [**Connect-Fly**](docs/FlyConnectApi.md#connect-fly)
 To use Fly PowerShell Client, one need to connect to Fly public API with PowerShell:
 ```powershell
@@ -45,8 +43,9 @@ $certificate = (Get-ChildItem -Path 'Cert:\LocalMachine\My\304CAFB0719971D7F180D
 ```
 After you connect to Fly public API, then you can perform various operations like creating projects, adding mappings to projects, running jobs and monitoring mapping migration status, etc.
 
+
 ### 2. [**New-FlyMigrationProject**](docs/FlyProjectApi.md#new-flymigrationproject)
-Following PowerShell command will create a SharePoint project:
+Following PowerShell command will create a project:
 ```powershell
 New-FlyMigrationProject `
     -Name "project name"`
@@ -125,7 +124,6 @@ If you omit ```-Include``` parameter, only summary information will be included 
 We also provided some other powershell commands with which you can automate your migration process. You can refer to the [**documentation**](docs/FlyApi.md) for more details.
 
 ## FAQ
-
 - **Q** How can I find the Fly public API URL when using [**Connect-Fly**](docs/FlyConnectApi.md#connect-fly)?
   - **A**: The public API URL varies with your data center. Choose the public API URL according to your data center. Please refer to [**Fly user guide**](https://cdn.avepoint.com/assets/webhelp/fly/index.htm#!Documents/usepowershellsdk.htm) for more details.
 - **Q**: What can I do if there is a 401(Unauthorized) error?

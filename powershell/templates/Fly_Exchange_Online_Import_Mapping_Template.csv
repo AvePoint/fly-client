@@ -1,0 +1,9 @@
+﻿Source,Source type,Destination,Destination type
+userT@contososrc.onmicrosoft.com,User mailbox,user@contosodest.onmicrosoft.com,User mailbox
+archiveT@contososrc.onmicrosoft.com,Archive mailbox,archive@contosodest.onmicrosoft.com,Archive mailbox
+distributionT@contososrc.onmicrosoft.com,Distribution list,distribution@contosodest.onmicrosoft.com,Distribution list
+groupMailT@contososrc.onmicrosoft.com,Microsoft 365 Group mailbox,groupMail@contosodest.onmicrosoft.com,Microsoft 365 Group mailbox
+resourceT@contososrc.onmicrosoft.com,Resource mailbox,resource@contosodest.onmicrosoft.com,Resource mailbox
+sharedT@contososrc.onmicrosoft.com,Shared mailbox,shared@contosodest.onmicrosoft.com,Shared mailbox
+securityT@contososrc.onmicrosoft.com,Mail-enabled security group,security@contosodest.onmicrosoft.com,Mail-enabled security group
+distributionT@contososrc.onmicrosoft.com,Distribution list,office365@contosodest.onmicrosoft.com,Microsoft 365 Group
