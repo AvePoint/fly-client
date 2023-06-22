@@ -67,7 +67,7 @@ Export-FlyM365GroupMappingStatus -Project $Project -OutFile $OutFile -Mappings $
 # **Export-FlyM365GroupMigrationReport**
 > Export-FlyM365GroupMigrationReport<br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Project] <String><br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-OutFile] <String><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-OutFolder] <String><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Mappings] <String><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-FileType] <String><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-TimeZoneOffset] <Int32><br>
@@ -80,7 +80,7 @@ Generate migration report for the specified project mappings.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **Project** | **String**| Specify the name of the project to export mappings. | 
- **OutFile** | **String**| Specify the csv file path of the project mappings to export. | 
+ **OutFolder** | **String**| Specify the folder path of the migration report files. | 
  **Mappings** | **String**| Specify the csv file to specific project mappings to export, optional if you want to export the whole project mappings. | [optional]
  **FileType** | **String**| Specify the format of the generated report file, support 'CSV' and 'Excel', optional if use CSV type. | [optional]
  **TimeZoneOffset** | **Int32**| Specify the UTC time offset of current browser. This value will be used to adjust time values when generating the report file, optional for UTC timezone. | [optional]
@@ -89,13 +89,13 @@ Name | Type | Description  | Notes
 ### Example
 ```powershell
 $Project = "ProjectName" 
-$OutFile = "Export_Mapping_File" 
+$OutFolder = "Migration_Report_Folder_Path" 
 $Mappings = "Mappings_File" 
 $FileType = "Excel" 
 $TimeZoneOffset = -300 
 $Include = @('FailedObjects','WarningObjects','SuccessfulObjects','SkippedObjects','FilterOutObjects','NotFoundObjects','ErrorIgnoredObjects') 
 
-Export-FlyM365GroupMigrationReport -Project $Project -OutFile $OutFile -Mappings $Mappings -FileType $FileType -TimeZoneOffset $TimeZoneOffset -Include $Include
+Export-FlyM365GroupMigrationReport -Project $Project -OutFolder $OutFolder -Mappings $Mappings -FileType $FileType -TimeZoneOffset $TimeZoneOffset -Include $Include
 ```
 
 [[Back to top]](#) [[Back to API list]](FlyApi.md#documentation-for-cmdlets) [[Back to README]](../README.md)
