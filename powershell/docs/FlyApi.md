@@ -25,11 +25,22 @@ Method | Description
 [**Start-FlySharePointVerification**](FlySharePointApi.md#start-flysharepointverification) | Start a verification operation against the selected project mappings.
 [**Start-FlySharePointPreScan**](FlySharePointApi.md#start-flysharepointprescan) | Start a pre-scan job against the selected project mappings.
 [**Start-FlySharePointMigration**](FlySharePointApi.md#start-flysharepointmigration) | Start a migration job against the selected project mappings.
+[**Import-FlyOneDriveMappings**](FlyOneDriveApi.md#import-flyonedrivemappings) | Add migration mappings into the specified OneDrive project.
+[**Export-FlyOneDriveMappingStatus**](FlyOneDriveApi.md#export-flyonedrivemappingstatus) | Export the OneDrive migration mapping status to a csv file.
+[**Export-FlyOneDriveMigrationReport**](FlyOneDriveApi.md#export-flyonedrivemigrationreport) | Generate migration report for the specified project mappings.
+[**Start-FlyOneDriveVerification**](FlyOneDriveApi.md#start-flyonedriveverification) | Start a verification operation against the selected project mappings.
+[**Start-FlyOneDrivePreScan**](FlyOneDriveApi.md#start-flyonedriveprescan) | Start a pre-scan job against the selected project mappings.
+[**Start-FlyOneDriveMigration**](FlyOneDriveApi.md#start-flyonedrivemigration) | Start a migration job against the selected project mappings.
 [**Import-FlyTeamsMappings**](FlyTeamsApi.md#import-flyteamsmappings) | Add migration mappings into the specified Teams project.
 [**Export-FlyTeamsMappingStatus**](FlyTeamsApi.md#export-flyteamsmappingstatus) | Export the Teams migration mapping status to a csv file.
 [**Export-FlyTeamsMigrationReport**](FlyTeamsApi.md#export-flyteamsmigrationreport) | Generate migration report for the specified project mappings.
 [**Start-FlyTeamsVerification**](FlyTeamsApi.md#start-flyteamsverification) | Start a verification operation against the selected project mappings.
 [**Start-FlyTeamsPreScan**](FlyTeamsApi.md#start-flyteamsprescan) | Start a pre-scan job against the selected project mappings.
 [**Start-FlyTeamsMigration**](FlyTeamsApi.md#start-flyteamsmigration) | Start a migration job against the selected project mappings.
+[**Import-FlyTeamChatMappings**](FlyTeamChatApi.md#import-flyteamchatmappings) | Add migration mappings into the specified TeamChat project.
+[**Export-FlyTeamChatMappingStatus**](FlyTeamChatApi.md#export-flyteamchatmappingstatus) | Export the TeamChat migration mapping status to a csv file.
+[**Export-FlyTeamChatMigrationReport**](FlyTeamChatApi.md#export-flyteamchatmigrationreport) | Generate migration report for the specified project mappings.
+[**Start-FlyTeamChatVerification**](FlyTeamChatApi.md#start-flyteamchatverification) | Start a verification operation against the selected project mappings.
+[**Start-FlyTeamChatMigration**](FlyTeamChatApi.md#start-flyteamchatmigration) | Start a migration job against the selected project mappings.
 
 [[Back to top]](#) [[Back to README]](../README.md)
