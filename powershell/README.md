@@ -8,9 +8,10 @@
 ## Module supported
 - Exchange Online
 - SharePoint Online
+- OneDrive for Business
 - Microsoft 365 Groups
 - Microsoft Teams
-
+- Microsoft Teams Chat
 <a name="installation"></a>
 ## Installation
 
