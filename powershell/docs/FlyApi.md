@@ -5,6 +5,7 @@ Method | Description
 [**Connect-Fly**](FlyConnectApi.md#connect-fly) | Connect to Fly Public API with Client Credentials.
 [**Disconnect-Fly**](FlyConnectApi.md#disconnect-fly) | Disconnect from Fly Public API.
 [**New-FlyMigrationProject**](FlyProjectApi.md#new-flymigrationproject) | Create a new migration project.
+[**Get-FlyMigrationProject**](FlyProjectApi.md#get-flymigrationproject) | Get a migration project by name.
 [**Import-FlyMigrationProjects**](FlyProjectApi.md#import-flymigrationprojects) | Import migration projects from csv file.
 [**Export-FlyErrorReport**](FlyProjectApi.md#export-flyerrorreport) | Generate error report for the specified.projects.
 [**Import-FlyExchangeMappings**](FlyExchangeApi.md#import-flyexchangemappings) | Add migration mappings into the specified Exchange project.
