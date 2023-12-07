@@ -29,6 +29,14 @@ Import-Module -Name Fly.Client -Verbose
 ### 1. [**Connect-Fly**](docs/FlyConnectApi.md#connect-fly)
 To use Fly PowerShell Client, one need to connect to Fly public API with PowerShell:
 ```powershell
+# by Client Secret
+Connect-Fly `
+    -Url "fly public api url" `
+    -ClientId "application client id from AOS" `
+    -ClientSecret "your client secret"
+```
+```powershell
+# by Client Certificate
 Connect-Fly `
     -Url "fly public api url" `
     -ClientId "application client id from AOS" `
