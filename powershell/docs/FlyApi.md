@@ -2,7 +2,7 @@
 
 Method | Description
 ------------- | -------------
-[**Connect-Fly**](FlyConnectApi.md#connect-fly) | Connect to Fly Public API with Client Credentials.
+[**Connect-Fly**](FlyConnectApi.md#connect-fly) | Connect to Fly Public API with Client Credentials/Client Secret.
 [**Disconnect-Fly**](FlyConnectApi.md#disconnect-fly) | Disconnect from Fly Public API.
 [**New-FlyMigrationProject**](FlyProjectApi.md#new-flymigrationproject) | Create a new migration project.
 [**Get-FlyMigrationProject**](FlyProjectApi.md#get-flymigrationproject) | Get a migration project by name.
