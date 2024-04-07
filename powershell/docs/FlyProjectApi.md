@@ -5,6 +5,7 @@ Method | Description
 [**New-FlyMigrationProject**](FlyProjectApi.md#new-flymigrationproject) | Create a new migration project.
 [**Get-FlyMigrationProject**](FlyProjectApi.md#get-flymigrationproject) | Get a migration project by name or platform.
 [**Import-FlyMigrationProjects**](FlyProjectApi.md#import-flymigrationprojects) | Import migration projects from csv file.
+[**Move-FlyMigrationMappings**](FlyProjectApi.md#move-flymigrationmappings) | Restructure migration projects from csv file.
 [**Export-FlyErrorReport**](FlyProjectApi.md#export-flyerrorreport) | Generate error report for the specified.projects.
 
 <a name="New-FlyMigrationProject"></a>
@@ -49,7 +50,7 @@ New-FlyMigrationProject -Name $Name -SourceConnection $SourceConnection -Destina
 > ProjectModel Get-FlyMigrationProject<br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Name] <String><br>
 
-Get a migration project by name and platform.
+Get a migration project by name.
 
 ### Parameters
 
@@ -90,6 +91,30 @@ $Path = "Import_Projects_File"
 $OutFilePath = "Export_Report_File" 
 
 Import-FlyMigrationProjects -Path $Path -OutFile $OutFilePath
+```
+[[Back to top]](#) [[Back to API list]](FlyApi.md#documentation-for-cmdlets) [[Back to README]](../README.md)
+
+<a name="Move-FlyMigrationMappings"></a>
+
+# **Move-FlyMigrationMappings**
+> Move-FlyMigrationMappings<br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Path] <String><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-OutFile] <String><br>
+Restructure migration projects from csv file.
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **Path** | **String**| Specify the csv file path of the project mappings. You can check the csv template of the projects file from [**here**](../templates/Fly_Move_Mappings_Template.csv).
+ **OutFile** | **String**| Specify the csv file path of the restructure result. If you do not specify the report path，the report file will be generated in the same directory as the csv file. | [optional]
+
+### Example
+```powershell
+$Path = "Move_Mappings_File" 
+$OutFilePath = "Restructure_Report_File" 
+
+Move-FlyMigrationMappings -Path $Path -OutFile $OutFilePath
 ```
 [[Back to top]](#) [[Back to API list]](FlyApi.md#documentation-for-cmdlets) [[Back to README]](../README.md)
 

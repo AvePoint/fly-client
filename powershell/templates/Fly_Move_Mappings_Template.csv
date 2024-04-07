@@ -1,0 +1,4 @@
+﻿Source,Destination,Source project,Destination project
+user01@contososrc.onmicrosoft.com,user01@contosodest.onmicrosoft.com,Exchange Project 01,PROD_Exchange01
+user02@contososrc.onmicrosoft.com,user02@contosodest.onmicrosoft.com,Exchange Project 01,PROD_Exchange01
+user03@contososrc.onmicrosoft.com,user03@contosodest.onmicrosoft.com,Exchange Project 01,PROD_Exchange01

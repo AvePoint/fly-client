@@ -7,6 +7,7 @@ Method | Description
 [**New-FlyMigrationProject**](FlyProjectApi.md#new-flymigrationproject) | Create a new migration project.
 [**Get-FlyMigrationProject**](FlyProjectApi.md#get-flymigrationproject) | Get a migration project by name.
 [**Import-FlyMigrationProjects**](FlyProjectApi.md#import-flymigrationprojects) | Import migration projects from csv file.
+[**Move-FlyMigrationMappings**](FlyProjectApi.md#move-flymigrationmappings) | Restructure migration projects from csv file.
 [**Export-FlyErrorReport**](FlyProjectApi.md#export-flyerrorreport) | Generate error report for the specified.projects.
 [**Import-FlyExchangeMappings**](FlyExchangeApi.md#import-flyexchangemappings) | Add migration mappings into the specified Exchange project.
 [**Export-FlyExchangeMappingStatus**](FlyExchangeApi.md#export-flyexchangemappingstatus) | Export the Exchange migration mapping status to a csv file.
