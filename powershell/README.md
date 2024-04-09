@@ -86,7 +86,7 @@ Start-FlySharePointMigration `
     -Mappings "csv file contains all mappings to run job" `
     -ScheduleTime (Get-Date -Date "2023-10-14 22:00:00").ToUniversalTime()
 ```
-Both ```-Mappings``` and ```-ScheduleTime``` are optional. If you omit the ```-Mappings``` parameter, this command will try to start jobs for all the mappings in the specified project. If you omit the ```-ScheduleTime``` parameter, this command will try to schedule the mappings as soon as possible.
+Both ```-Mappings``` and ```-ScheduleTime``` are optional. If you omit the ```-Mappings``` parameter, this command will try to start jobs for all the mappings in the specified project, also you can use it to specify some mappings to start job, refer the csv template of the mappings file from [**here**](templates/Fly_SharePoint_Online_Import_Mapping_Template.csv). If you omit the ```-ScheduleTime``` parameter, this command will try to schedule the mappings as soon as possible.
 
 ### 5. [**Export-FlySharePointMappingStatus**](docs/FlySharePointApi.md#export-flysharepointmappingstatus)
 After you start the migration job with the previous PowerShell command, you can monitor the mapping’s migration status with following command:
@@ -96,7 +96,7 @@ Export-FlySharePointMappingStatus `
     -OutFile "csv file path to store the exported result" `
     -Mappings "csv file contains all mappings you want to export status"
 ```
-The ```-Mappings``` parameter is optional. If you omit it, this command will try to export status of all mappings in the specified project.  After this command completes you can check the result csv file in ```-OutFile``` with your own logic. 
+The ```-Mappings``` parameter is optional. If you omit it, this command will try to export status of all mappings in the specified project, also you can use it to specify some mappings to export, refer the csv template of the mappings file from [**here**](templates/Fly_SharePoint_Online_Import_Mapping_Template.csv). After this command completes you can check the result csv file in ```-OutFile``` with your own logic. 
 For example, you can summarize the data in the csv file and check whether all the mappings specified are in final status:
 ```powershell
 $data = Import-Csv "csv file path to store the exported result"
@@ -123,7 +123,7 @@ Export-FlySharePointMigrationReport `
     -Include "Object status to be included in the generated report"
 ```
 Only ```-Project``` and ```-OutFolder``` are required for this command.
-If you omit the ```-Mappings``` parameter, this command will generate report for all mappings with proper status in this project.
+If you omit the ```-Mappings``` parameter, this command will generate report for all mappings with proper status in this project, also you can use it to specify some mappings to export migration reports, refer the csv template of the mappings file from [**here**](templates/Fly_SharePoint_Online_Import_Mapping_Template.csv).
 ```-FileType``` will be defaulted to CSV if you omit it.
 If you omit ```-TimeZoneOffset```, this command assume you want to use UTC time.
 If you omit ```-Include``` parameter, only summary information will be included in the generated report and no item details will be included.

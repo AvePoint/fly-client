@@ -49,7 +49,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **Project** | **String**| Specify the name of the project to export mappings. | 
  **OutFile** | **String**| Specify the csv file path of the project mappings to export. | 
- **Mappings** | **String**| Specify the csv file to specific project mappings to export, optional if you want to export the whole project mappings. | [optional]
+ **Mappings** | **String**| Specify the csv file to specific project mappings to export, optional if you want to export the whole project mappings. You can check the csv template of the mappings file from [**here**](../templates/Fly_Microsoft_Team_Chat_Import_Mapping_Template.csv). | [optional]
 
 ### Example
 ```powershell
@@ -80,7 +80,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **Project** | **String**| Specify the name of the project to export mappings. | 
  **OutFolder** | **String**| Specify the folder path of the migration report files. | 
- **Mappings** | **String**| Specify the csv file to specific project mappings to export, optional if you want to export the whole project mappings. | [optional]
+ **Mappings** | **String**| Specify the csv file to specific project mappings to export, optional if you want to export the whole project mappings. You can check the csv template of the mappings file from [**here**](../templates/Fly_Microsoft_Team_Chat_Import_Mapping_Template.csv). | [optional]
  **FileType** | **String**| Specify the format of the generated report file, support 'CSV' and 'Excel', optional if use CSV type. | [optional]
  **TimeZoneOffset** | **Int32**| Specify the UTC time offset of current browser. This value will be used to adjust time values when generating the report file, optional for UTC timezone. | [optional]
  **Include** | **String**| Specify a list of objects to be included in the migration report, support 'FailedObjects','WarningObjects','SuccessfulObjects','SkippedObjects','FilterOutObjects','NotFoundObjects','ErrorIgnoredObjects', optional if you do not export object details. | [optional]
@@ -112,7 +112,7 @@ Start a verification operation against the selected project mappings.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **Project** | **String**| Specify the name of the project to run job. | 
- **Mappings** | **String**| Specify the csv file to specific project mappings to run job, optional if you want to specify all of the mappings of the project. | [optional]
+ **Mappings** | **String**| Specify the csv file to specific project mappings to run job, optional if you want to specify all of the mappings of the project. You can check the csv template of the mappings file from [**here**](../templates/Fly_Microsoft_Team_Chat_Import_Mapping_Template.csv). | [optional]
 
 ### Example
 ```powershell
@@ -140,7 +140,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **Project** | **String**| Specify the name of the project to run job. | 
  **Mode** | **String**| Specify the mode of the migration job, support 'FullMigration', 'IncrementalMigration', 'ErrorOnly' and 'PermissionOnly'. | 
- **Mappings** | **String**| Specify the csv file to specific project mappings to run job, optional if you want to specify all of the mappings of the project. | [optional]
+ **Mappings** | **String**| Specify the csv file to specific project mappings to run job, optional if you want to specify all of the mappings of the project. You can check the csv template of the mappings file from [**here**](../templates/Fly_Microsoft_Team_Chat_Import_Mapping_Template.csv). | [optional]
  **ScheduleTime** | **DateTime**| Specify the UTC time when you want the job to be scheduled. By default the job will be executed as soon as possible, optional for no schedule. | [optional]
 
 ### Example
