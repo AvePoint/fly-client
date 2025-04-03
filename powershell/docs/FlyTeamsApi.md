@@ -120,7 +120,7 @@ Name | Type | Description  | Notes
 $Project = "ProjectName" 
 $Mappings = "Mappings_File" 
 
-Start-FlyTeamsPreScanJob -Project $Project -Mappings $Mappings
+Start-FlyTeamsPreScan -Project $Project -Mappings $Mappings
 ```
 
 [[Back to top]](#) [[Back to API list]](FlyApi.md#documentation-for-cmdlets) [[Back to README]](../README.md)
